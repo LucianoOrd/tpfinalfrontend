@@ -6,11 +6,20 @@ import { AppComponent } from './app.component';
 import { FormularioAlumnoComponent } from './components/formulario-alumno/formulario-alumno.component';
 import { ListaAlumnosComponent } from './components/lista-alumnos/lista-alumnos.component';
 
+import { LoginComponent } from './components/login/login.component';
+import { SignupComponent } from './components/signup/signup.component';
+
+
 @NgModule({
   declarations: [
     AppComponent,
+
     FormularioAlumnoComponent,
     ListaAlumnosComponent
+
+    LoginComponent,
+    SignupComponent
+
   ],
   imports: [
     BrowserModule,
