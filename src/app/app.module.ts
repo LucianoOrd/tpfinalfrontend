@@ -8,6 +8,8 @@ import { ListaAlumnosComponent } from './components/administrador/lista-alumnos/
 
 import { LoginComponent } from './components/login/login.component';
 import { SignupComponent } from './components/signup/signup.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
+import { HomeComponent } from './components/home/home.component';
 
 
 @NgModule({
@@ -16,7 +18,13 @@ import { SignupComponent } from './components/signup/signup.component';
     FormularioAlumnoComponent,
     ListaAlumnosComponent,
     LoginComponent,
-    SignupComponent
+
+    SignupComponent,
+
+    SignupComponent,
+    NavbarComponent,
+    HomeComponent
+
   ],
   imports: [
     BrowserModule,
