@@ -10,6 +10,9 @@ import { LoginComponent } from './components/login/login.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { HomeComponent } from './components/home/home.component';
+import { FormsModule } from '@angular/forms';
+import { FormularioPagosComponent } from './components/administrador/formulario-pagos/formulario-pagos.component';
+
 
 
 @NgModule({
@@ -23,12 +26,14 @@ import { HomeComponent } from './components/home/home.component';
 
     SignupComponent,
     NavbarComponent,
-    HomeComponent
+    HomeComponent,
+    FormularioPagosComponent
 
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
