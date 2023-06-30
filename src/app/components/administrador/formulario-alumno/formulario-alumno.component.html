@@ -1,42 +1,45 @@
  <div class="container">
         <h1 class="text-center">Formulario de Alumnos</h1>
+        <button class="btn btn-success" (click)="guardarAlumno()">Agregar Alumno</button>
             <div class="container" style="color: rgb(253, 253, 253); background: #000; width: 700px;">
                 <form >
                     <fieldset >
                     <legend class="text-center">Registrar Alumno</legend>
                     <div class="mb-3">
                         <label for="disabledTextInput" class="form-label">Ingresar nombre</label>
-                        <input type="text" id="" class="form-control" placeholder=" Ejemplo: juan, marcos, julieta, etc...">
+                        <input [(ngModel)]="alumno.nombre" name="nombre" type="text" id="" class="form-control" placeholder=" Ejemplo: juan, marcos, julieta, etc...">
                     </div>
                     <div class="mb-3">
                         <label for="disabledTextInput" class="form-label">Ingresar apellido</label>
-                        <input type="text" id="" class="form-control" placeholder=" Ejemplo: Sanchez, Messi, Fernandez, etc..">
+                        <input [(ngModel)]="alumno.apellido" name="apellido" type="text" id="" class="form-control" placeholder=" Ejemplo: Sanchez, Messi, Fernandez, etc..">
                     </div>
                     <div class="mb-3">
                         <label for="" class="form-label">Ingresar DNI</label>
-                        <input type="number" id="" class="form-control" placeholder="Ejemplo: 42682738">
+                        <input [(ngModel)]="alumno.dni" name="dni" type="number" id="" class="form-control" placeholder="Ejemplo: 42682738">
                     </div>
                     <div class="mb-3">
                         <label for="disabledTextInput" class="form-label">Ingresar numero de celular</label>
-                        <input type="text" id="" class="form-control" placeholder=" Ejemplo: 3881273823 ">
+                        <input [(ngModel)]="alumno.nroCelular" name="nroCelular" type="text" id="" class="form-control" placeholder=" Ejemplo: 3881273823 ">
                     </div>
                     <div class="mb-3">
                         <label for="disabledTextInput" class="form-label">Ingresar domicilio</label>
-                        <input type="text" id="" class="form-control" placeholder="Ejemplo: Barrio ... , Calle ... , num ...">
+                        <input [(ngModel)]="alumno.domicilio" name="domicilio" type="text" id="" class="form-control" placeholder="Ejemplo: Barrio ... , Calle ... , num ...">
                     </div>
                     <div class="mb-3">
                         <label for="exampleFormControlInput1" class="form-label">Email address</label>
-                        <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+                        <input [(ngModel)]="alumno.email" name="email" type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
                       </div>
                       <!-- <div class="mb-3">
                         <label for="exampleFormControlTextarea1" class="form-label">Example textarea</label>
                         <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
                       </div> -->
-                    <button type="submit" class="btn btn-success " style="background-color: chocolate;">Submit</button>
+                    <button *ngIf="accion === 'new'" type="submit" class="btn btn-success " style="background-color: chocolate;" (click)="crearAlumno()">Guardar Alumno</button>
+                    <button *ngIf="accion === 'update'" type="submit" class="btn btn-success " style="background-color: chocolate;" (click)="confirmarModificacion()">Modificar Alumno</button>
+
                     </fieldset>
                 </form>
             </div>
-       
+
             <!-- <form>
                 <div class="form-group">
                     <label for="titulo">Titulo</label>
@@ -66,4 +69,4 @@
         <br>
         <button class="btn btnprimary" (click)="submitted=false">Continuar</button>
    </div> -->
-   
+

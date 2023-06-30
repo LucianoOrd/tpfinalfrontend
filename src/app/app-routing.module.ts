@@ -22,8 +22,8 @@ const routes: Routes = [
   { path: 'navbar', component: NavbarComponent },
 
   { path: 'home', component: HomeComponent },
-  { path: 'formulario-alumno', component: FormularioAlumnoComponent},
-  { path: 'lista-alumnos', component: ListaAlumnosComponent}
+  { path: 'formulario-alumno/:id', component: FormularioAlumnoComponent},
+  { path: 'lista-alumnos', component: ListaAlumnosComponent},
 
   { path: 'alumno/perfil', component: PerfilComponent },
   { path: 'alumno/cuota', component: VerSubscripcionComponent },
