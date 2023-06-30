@@ -10,8 +10,14 @@ import { LoginComponent } from './components/login/login.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { HomeComponent } from './components/home/home.component';
+
 import { FormsModule } from '@angular/forms';
 import { FormularioPagosComponent } from './components/administrador/formulario-pagos/formulario-pagos.component';
+
+
+import { PerfilComponent } from './components/alumno/perfil/perfil.component';
+import { VerSubscripcionComponent } from './components/alumno/ver-subscripcion/ver-subscripcion.component';
+import { SemanarutinasComponent } from './components/alumno/semanarutinas/semanarutinas.component';
 
 
 
@@ -27,7 +33,13 @@ import { FormularioPagosComponent } from './components/administrador/formulario-
     SignupComponent,
     NavbarComponent,
     HomeComponent,
+
     FormularioPagosComponent
+
+
+    PerfilComponent,
+    VerSubscripcionComponent,
+    SemanarutinasComponent
 
   ],
   imports: [
