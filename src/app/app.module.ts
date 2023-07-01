@@ -12,6 +12,8 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { HomeComponent } from './components/home/home.component';
 import { FormsModule } from '@angular/forms';
 import { FormularioPagosComponent } from './components/administrador/formulario-pagos/formulario-pagos.component';
+import { FormularioInsumosComponent } from './components/administrador/formulario-insumos/formulario-insumos.component';
+import { ListaInsumosComponent } from './components/administrador/lista-insumos/lista-insumos.component';
 
 
 
@@ -27,7 +29,9 @@ import { FormularioPagosComponent } from './components/administrador/formulario-
     SignupComponent,
     NavbarComponent,
     HomeComponent,
-    FormularioPagosComponent
+    FormularioPagosComponent,
+    FormularioInsumosComponent,
+    ListaInsumosComponent
 
   ],
   imports: [
