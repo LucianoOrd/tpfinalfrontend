@@ -15,14 +15,17 @@ import { VerSubscripcionComponent } from './components/alumno/ver-subscripcion/v
 import { SemanarutinasComponent } from './components/alumno/semanarutinas/semanarutinas.component';
 
 
-//agregar nuevas paginas aca              vvvvvv
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'signup', component: SignupComponent },
   { path: 'navbar', component: NavbarComponent },
 
   { path: 'home', component: HomeComponent },
+
+  { path: 'formulario-alumno', component: FormularioAlumnoComponent},
+
   { path: 'formulario-alumno/:id', component: FormularioAlumnoComponent},
+
   { path: 'lista-alumnos', component: ListaAlumnosComponent},
 
   { path: 'alumno/perfil', component: PerfilComponent },
