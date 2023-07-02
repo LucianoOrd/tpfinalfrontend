@@ -15,7 +15,7 @@ import { ListaInsumosComponent } from './components/administrador/lista-insumos/
 import { PerfilComponent } from './components/alumno/perfil/perfil.component';
 import { VerSubscripcionComponent } from './components/alumno/ver-subscripcion/ver-subscripcion.component';
 import { SemanarutinasComponent } from './components/alumno/semanarutinas/semanarutinas.component';
-
+import {HttpClientModule} from '@angular/common/http';
 
 
 @NgModule({
@@ -32,6 +32,7 @@ import { SemanarutinasComponent } from './components/alumno/semanarutinas/semana
     FormularioInsumosComponent,
     ListaInsumosComponent,
     FormularioPagosComponent,
+    FormularioPagosComponent,
     PerfilComponent,
     VerSubscripcionComponent,
     SemanarutinasComponent
@@ -40,7 +41,8 @@ import { SemanarutinasComponent } from './components/alumno/semanarutinas/semana
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
