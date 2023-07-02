@@ -1,0 +1,28 @@
+<div class="container">
+    <div class="row">
+      <div class="col">
+        <h2>Calendario Semanal De ejercicios</h2>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th *ngFor="let dia of diasSemana">{{ dia }}</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td *ngFor="let dia of diasSemana">
+                <div *ngFor="let ejercicio of ejerciciosBasic[dia]">
+                  <h1 class="text-primary h6">Ejercicio: {{ ejercicio.ejercicio }}</h1>
+                  <div>Demostracion: {{ ejercicio.demostracion }}</div>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
