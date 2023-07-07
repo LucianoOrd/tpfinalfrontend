@@ -32,7 +32,7 @@ export class ListaAlumnosComponent implements OnInit {
   }
 
   public modificarAlumno(alumno: Alumno){
-    this.router.navigate(["formulario-alumno", alumno._id])
+    this.router.navigate(["administrador/formulario/alumno", alumno._id])
   }
 
   public eliminarAlumno(alumno:Alumno){
@@ -44,7 +44,7 @@ export class ListaAlumnosComponent implements OnInit {
     });
     location.reload();
     // Nose xq no se redirige a la url formulario-alumno/0 cuando elimino el alumno, se queda en el id en la url
-    this.router.navigate(["formulario-alumno", 0])
+    this.router.navigate(["administrador/formulario/alumno", 0])
   }
 
 
