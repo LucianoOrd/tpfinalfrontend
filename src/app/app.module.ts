@@ -36,7 +36,6 @@ import {HttpClientModule} from '@angular/common/http';
     PerfilComponent,
     VerSubscripcionComponent,
     SemanarutinasComponent
-
   ],
   imports: [
     BrowserModule,
