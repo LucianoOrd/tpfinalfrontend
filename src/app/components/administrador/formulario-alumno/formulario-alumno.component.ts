@@ -53,7 +53,7 @@ export class FormularioAlumnoComponent implements OnInit {
 
   public guardarAlumno(){
     this.alumno = new Alumno();
-    this.router.navigate(["formulario-alumno", 0])
+    this.router.navigate(["administrador/formulario/alumno", 0])
 
   }
 

@@ -13,20 +13,25 @@ import { ListaAlumnosComponent } from './components/administrador/lista-alumnos/
 import { PerfilComponent } from './components/alumno/perfil/perfil.component';
 import { VerSubscripcionComponent } from './components/alumno/ver-subscripcion/ver-subscripcion.component';
 import { SemanarutinasComponent } from './components/alumno/semanarutinas/semanarutinas.component';
+import { FormularioInsumosComponent } from './components/administrador/formulario-insumos/formulario-insumos.component';
+import { ListaInsumosComponent } from './components/administrador/lista-insumos/lista-insumos.component';
 
 
 const routes: Routes = [
+
+
   { path: 'login', component: LoginComponent },
   { path: 'signup', component: SignupComponent },
   { path: 'navbar', component: NavbarComponent },
 
+  // Rutas del Administrador
+  { path: 'administrador/formulario/insumo/:id', component:FormularioInsumosComponent},
+  { path: 'administrador/lista-insumos', component:ListaInsumosComponent},
+  { path: 'administrador/formulario/alumno', component: FormularioAlumnoComponent},
+  { path: 'administrador/formulario/alumno/:id', component: FormularioAlumnoComponent},
+  { path: 'administrador/lista-alumnos', component: ListaAlumnosComponent},
+
   { path: 'home', component: HomeComponent },
-
-  { path: 'formulario-alumno', component: FormularioAlumnoComponent},
-
-  { path: 'formulario-alumno/:id', component: FormularioAlumnoComponent},
-
-  { path: 'lista-alumnos', component: ListaAlumnosComponent},
 
   { path: 'alumno/perfil', component: PerfilComponent },
   { path: 'alumno/cuota', component: VerSubscripcionComponent },
