@@ -24,8 +24,7 @@ export class Alumno {
     this.nroCelular = nroCelular!;
     this.domicilio = domicilio!;
     this.fechaInicio = fechaInicio!;
-    this.plan = new Plan()!;
-    this.usuario = new Usuario()!;
-
+    this.plan = new Plan(plan?.nombrePlan, plan?.cantDias);
+    this.usuario = new Usuario(usuario?.nombreUsuario, usuario?.password);
   }
 }
