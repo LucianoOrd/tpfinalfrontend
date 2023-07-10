@@ -14,7 +14,7 @@ export class FormularioPagosCuotaComponent {
   dni!: number;
   arrayCuotas!: Array<Cuota>;
   constructor(private pagoCuotaService: CuotasService) {
-
+    this.cuota = new Cuota();
   }
 
   obtenerCuotas(){
@@ -49,5 +49,9 @@ export class FormularioPagosCuotaComponent {
       },
       (error) => { console.log(error); }
     )
+  }
+
+  generarCuponPago(cuot: Cuota){
+    this.cuota = new Cuota(cuot.fechaDePago, cuot.fechaCaducidad, cuot.pagado, cuot.importe, cuot.alumno);
   }
 }

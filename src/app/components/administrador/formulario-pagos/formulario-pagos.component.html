@@ -1,43 +1,43 @@
 <div class="container pagos">
-    <h1>Formulario de Pagos de Insumos</h1>
-    <div class="container" style="color: rgb(253, 253, 253); background: #000; width: 700px;">
-        <form>
-            <fieldset>
-                <legend class="text-center">Ingrese Datos del pago</legend>
-                <div class="mb-3">
-                    <input class="form-control" type="text" placeholder="Ingrese DNI del Alumno">
-                </div>
-                <div class="mb-3">
-                    <label for="">Total a pagar: </label>
-                </div>
+  <h1>Formulario de Pagos de Insumos</h1>
+  <div class="container" style="color: rgb(253, 253, 253); background: #000; width: 700px;">
+    <form>
+      <fieldset>
+        <legend class="text-center">Ingrese Datos del pago</legend>
+        <div class="mb-3">
+          <input class="form-control" type="text" placeholder="Ingrese DNI del Alumno">
+        </div>
+        <div class="mb-3">
+          <label for="">Total a pagar: </label>
+        </div>
 
-                <button type="submit" class="btn btn-success mb-5" style="background-color: chocolate;">Registrar Pago</button>
+        <button type="submit" class="btn btn-success mb-5" style="background-color: chocolate;">Registrar Pago</button>
 
-            </fieldset>
-        </form>
-        
-    </div>
-    <table class="table text-center border table-dark">
-      <thead>
-          <tr>
-            <th scope="col">Nombre</th>
-            <th scope="col">Descripcion</th>
-            <th scope="col">Precio</th>
-            <th scope="col">Stock</th>
-            <th scope="col">Imagen</th>
-            <th scope="col">Categoria</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let i of arrayInsumos">
-            <td>{{i.nombre}}</td>
-            <td>{{i.descripcion}}</td>
-            <td>{{i.precio}}</td>
-            <td>{{i.stock}}</td>
-            <td><img src="{{i.imagen}}" height="100px" width="100px"></td>
-            <td>{{i.categoria}}</td>
-          </tr>
-        </tbody>
+      </fieldset>
+    </form>
+
+  </div>
+  <table class="table text-center border table-dark">
+    <thead>
+      <tr>
+        <th scope="col">Nombre</th>
+        <th scope="col">Descripcion</th>
+        <th scope="col">Precio</th>
+        <th scope="col">Stock</th>
+        <th scope="col">Imagen</th>
+        <th scope="col">Categoria</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let i of arrayInsumos">
+        <td>{{i.nombre}}</td>
+        <td>{{i.descripcion}}</td>
+        <td>{{i.precio}}</td>
+        <td>{{i.stock}}</td>
+        <td><img src="{{i.imagen}}" height="100px" width="100px"></td>
+        <td>{{i.categoria}}</td>
+      </tr>
+    </tbody>
 
   </table>
 </div>

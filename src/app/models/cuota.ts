@@ -6,4 +6,12 @@ export class Cuota {
     pagado!: Boolean;
     importe!: number;
     alumno!: Alumno;
+
+    constructor(fechaDePago?: Date, fechaCaducidad?: Date, pagado?: Boolean, importe?: number, alumno?: Alumno){
+        this.fechaDePago = fechaDePago!;
+        this.fechaCaducidad = fechaCaducidad!;
+        this.pagado = pagado!;
+        this. importe = importe!;
+        this.alumno = new Alumno()!;
+    }
 }
