@@ -23,6 +23,17 @@ export class InsumoService {
     return this._http.post(this.urlBase + "/", body, httpOptions);
   }
 
+  public modificarInsumos(insumos: Array<Insumo>): Observable<any> {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        "Content-Type": "application/json"
+      }),
+      params: new HttpParams()
+    };
+    let body = JSON.stringify(insumos);
+    return this._http.post(this.urlBase + "/modificarInsumos", body, httpOptions);
+  }
+
   public updateInsumo(insumo: Insumo): Observable<any> {
     const httpOptions = {
       headers: new HttpHeaders({

@@ -15,8 +15,13 @@ export class FormularioPagosComponent implements OnInit {
   pago!: Pago;
   insumo!: Insumo;
   arrayInsumos!: Array<Insumo>;
+  arrayCarrito!: Array<Insumo>;
+  total !: number;
 
   constructor(private pagoInsumoService: InsumoService) {
+    this.arrayInsumos = new Array();
+    this.arrayCarrito = new Array();
+    this.insumo = new Insumo();
 
   }
 
@@ -34,13 +39,34 @@ export class FormularioPagosComponent implements OnInit {
           this.arrayInsumos.push(aux);
           aux = new Insumo();
         });
+        console.log(this.arrayInsumos)
       },
       (error) => { console.log(error); }
     )
   }
 
-  calcularTotal(){
-    
+  agregarCarrito(ins: Insumo){
+    this.arrayCarrito.push(ins);
+    this.total = this.total + ins.precio;
+    console.log(this.arrayCarrito);
+  }
+
+  quitarCarrito(ins: number){
+    this.total = this.total - this.arrayCarrito[ins].precio;
+    this.arrayCarrito.splice(ins, 1);
+    console.log(this.arrayCarrito);
+  }
+
+  modificarInsumos(){
+    this.pagoInsumoService.modificarInsumos(this.arrayCarrito).subscribe(
+      (result) => {
+        this.obtenerInsumos();
+        this.arrayCarrito = new Array<Insumo>();
+      },
+      (error) => {}
+    );
+
+
   }
 
 }

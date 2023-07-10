@@ -1,11 +1,11 @@
-<div class="container pagos">
-    <h1>Formulario de Pagos de Cuotas</h1>
+<div class="container d-flex flex-column justify-content-center align-items-center vh-100">
+    <h1 class="text-center">Formulario de Pagos de Cuotas</h1>
     <div class="container" style="color: rgb(253, 253, 253); background: #000; width: 700px;">
         <form>
             <fieldset>
                 <legend class="text-center">Ingrese Datos del pago</legend>
                 <div class="mb-3">
-                    <input class="form-control" type="number" id="dni" name="dni" placeholder="Ingrese DNI del Alumno"
+                    <input class="form-control" type="text" id="dni" name="dni" placeholder="Ingrese DNI del Alumno"
                         [(ngModel)]="dni">
                 </div>
                 <button type="submit" class="btn btn-success mb-5" style="background-color: chocolate;"
