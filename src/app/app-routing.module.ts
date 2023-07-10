@@ -15,6 +15,7 @@ import { VerSubscripcionComponent } from './components/alumno/ver-subscripcion/v
 import { SemanarutinasComponent } from './components/alumno/semanarutinas/semanarutinas.component';
 import { FormularioInsumosComponent } from './components/administrador/formulario-insumos/formulario-insumos.component';
 import { ListaInsumosComponent } from './components/administrador/lista-insumos/lista-insumos.component';
+import { InsumosComponent } from './components/alumno/insumos/insumos.component';
 
 
 const routes: Routes = [
@@ -33,9 +34,11 @@ const routes: Routes = [
 
   { path: 'home', component: HomeComponent },
 
+  //rutas alumno
   { path: 'alumno/perfil', component: PerfilComponent },
   { path: 'alumno/cuota', component: VerSubscripcionComponent },
   { path: 'alumno/calendario', component: SemanarutinasComponent },
+  { path: 'alumno/insumos', component: InsumosComponent },
   { path: '**', component: HomeComponent },
 
 ];

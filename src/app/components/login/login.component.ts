@@ -18,6 +18,9 @@ export class LoginComponent {
           this.router.navigate(["alumno/perfil"])
          }
       })
+    }else{
+      console.log("NO HAY TOKEN NO HAY SESION");
+      
     }
   }
   user: Usuario = new Usuario() 
@@ -26,11 +29,16 @@ export class LoginComponent {
   }
   
   login = () =>{
+    console.log("USUARIO QUE QUIERE INGRESAR: ", this.user);
     this.usuarioService.ingresarUser(this.user).subscribe(
+      
       (result:any)=>{
         this.datosUsuario.setUserData(result)
         this.router.navigate(["alumno/perfil"])
         window.localStorage.setItem("token", result.token)
+
+
+        // PARA BORRAR TOKEN EN CONSOLE DE NAVEGADOR => window.localStorage.removeItem('token')
       }
     )
   }
