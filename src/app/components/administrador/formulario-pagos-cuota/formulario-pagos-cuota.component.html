@@ -1,18 +1,69 @@
-<div class="container">
+<div class="container pagos">
     <h1>Formulario de Pagos de Cuotas</h1>
     <div class="container" style="color: rgb(253, 253, 253); background: #000; width: 700px;">
         <form>
             <fieldset>
                 <legend class="text-center">Ingrese Datos del pago</legend>
                 <div class="mb-3">
-                    <input class="form-control" type="text" placeholder="Ingrese DNI del Alumno">
+                    <input class="form-control" type="number" id="dni" name="dni" placeholder="Ingrese DNI del Alumno"
+                        [(ngModel)]="dni">
                 </div>
-                <div class="mb-3">
-                    <input class="form-control" type="number" placeholder="Ingrese Monto">
-                </div>
-                <button type="submit" class="btn btn-success " style="background-color: chocolate;">Registrar Pago</button>
+                <button type="submit" class="btn btn-success mb-5" style="background-color: chocolate;"
+                    (click)="obtenerCuotasDni()">Buscar</button>
             </fieldset>
         </form>
     </div>
+    <table class="table text-center border table-dark">
+        <thead>
+            <tr>
+                <th scope="col">Apellido</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">DNI</th>
+                <th scope="col">Plan</th>
+                <th scope="col">Fecha Vencimiento</th>
+                <th scope="col">Monto</th>
+                <th scope="col">Pagado</th>
+                <th scope="col">...</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let c of arrayCuotas">
+                <td>{{c.alumno.apellido}}</td>
+                <td>{{c.alumno.nombre}}</td>
+                <td>{{c.alumno.dni}}</td>
+                <td>{{c.alumno.plan.nombrePlan}}</td>
+                <td>{{c.fechaCaducidad | date: 'dd/MM/yyyy'}}</td>
+                <td>{{c.importe}}</td>
+                <td>{{c.pagado | estadoCuota}}</td>
+                <td>
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalPago" *ngIf="c.pagado == false">
+                        Pagar
+                    </button>
+                    <button type="button" class="btn btn-primary" *ngIf="c.pagado == true" disabled>
+                        Pagar
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
 
+
+<!-- Modal -->
+<div class="modal fade" id="modalPago" tabindex="-1" aria-labelledby="modalPagoLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="modalPago">Pago de Cuota</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                ...
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-primary">Pagar Cuota</button>
+            </div>
+        </div>
+    </div>
 </div>

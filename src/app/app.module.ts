@@ -16,7 +16,8 @@ import { PerfilComponent } from './components/alumno/perfil/perfil.component';
 import { VerSubscripcionComponent } from './components/alumno/ver-subscripcion/ver-subscripcion.component';
 import { SemanarutinasComponent } from './components/alumno/semanarutinas/semanarutinas.component';
 import {HttpClientModule} from '@angular/common/http';
-
+import { FormularioPagosCuotaComponent } from './components/administrador/formulario-pagos-cuota/formulario-pagos-cuota.component';
+import { EstadoCuotaPipe } from './pipes/estado-cuota.pipe';
 
 @NgModule({
   declarations: [
@@ -33,9 +34,11 @@ import {HttpClientModule} from '@angular/common/http';
     ListaInsumosComponent,
     FormularioPagosComponent,
     FormularioPagosComponent,
+    FormularioPagosCuotaComponent,
     PerfilComponent,
     VerSubscripcionComponent,
-    SemanarutinasComponent
+    SemanarutinasComponent,
+    EstadoCuotaPipe
   ],
   imports: [
     BrowserModule,
