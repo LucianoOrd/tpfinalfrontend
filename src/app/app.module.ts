@@ -50,7 +50,7 @@ import { DataTablesModule } from 'angular-datatables';
     FormularioEntrenadorComponent,
     ListaEntrenadoresComponent,
     InsumosComponent,
-    NavbargeneralComponent
+    NavbargeneralComponent,
 
 
     SemanarutinasComponent,
