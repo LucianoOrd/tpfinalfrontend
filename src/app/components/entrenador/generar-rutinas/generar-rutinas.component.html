@@ -13,7 +13,7 @@
       <tr *ngFor="let alumno of alumnos">
         <th scope="row">{{ alumno.dni }}</th>
         <td>{{ alumno.nombre + " " + alumno.apellido }}</td>
-        <td>{{ alumno.plan == null ? "No tiene plan" : alumno.plan }}</td>
+        <td>{{ alumno.plan == null ? "No tiene plan" : alumno.plan.nombrePlan }}</td>
         <td>
           <button
             data-bs-toggle="modal"

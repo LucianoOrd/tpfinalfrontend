@@ -24,7 +24,6 @@ import { InsumosComponent } from './components/alumno/insumos/insumos.component'
 import { NavbargeneralComponent } from './components/navbargeneral/navbargeneral.component';
 import { GenerarRutinasComponent } from './components/entrenador/generar-rutinas/generar-rutinas.component';
 
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -48,8 +47,7 @@ import { GenerarRutinasComponent } from './components/entrenador/generar-rutinas
     ListaEntrenadoresComponent,
     InsumosComponent,
     NavbargeneralComponent,
-    GenerarRutinasComponent
-
+    GenerarRutinasComponent,
 
   ],
   imports: [
