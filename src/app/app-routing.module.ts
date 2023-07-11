@@ -18,6 +18,8 @@ import { FormularioPagosComponent } from './components/administrador/formulario-
 import { FormularioPagosCuotaComponent } from './components/administrador/formulario-pagos-cuota/formulario-pagos-cuota.component';
 import { ListaInsumosComponent } from './components/administrador/lista-insumos/lista-insumos.component';
 import { InsumosComponent } from './components/alumno/insumos/insumos.component';
+import { FormularioEntrenadorComponent } from './components/administrador/formulario-entrenador/formulario-entrenador.component';
+import { ListaEntrenadoresComponent } from './components/administrador/lista-entrenadores/lista-entrenadores.component';
 
 
 const routes: Routes = [
@@ -35,8 +37,10 @@ const routes: Routes = [
   { path: 'administrador/formulario/pagosCuota', component: FormularioPagosCuotaComponent},
   { path: 'administrador/formulario/alumno/:id', component: FormularioAlumnoComponent},
   { path: 'administrador/lista-alumnos', component: ListaAlumnosComponent},
+  { path: 'administrador/formulario/entrenador/:id', component: FormularioEntrenadorComponent},
+  { path: 'administrador/lista-entrenadores', component: ListaEntrenadoresComponent},
 
-  { path: 'home', component: HomeComponent },
+  // { path: 'home', component: HomeComponent },
 
   //rutas alumno
   { path: 'alumno/perfil', component: PerfilComponent },
