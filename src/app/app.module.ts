@@ -22,7 +22,11 @@ import { FormularioEntrenadorComponent } from './components/administrador/formul
 import { ListaEntrenadoresComponent } from './components/administrador/lista-entrenadores/lista-entrenadores.component'
 import { InsumosComponent } from './components/alumno/insumos/insumos.component';
 import { NavbargeneralComponent } from './components/navbargeneral/navbargeneral.component';
-
+//importaciones para utilizar librerias de grafica
+import { NgApexchartsModule } from 'ng-apexcharts';
+import { Jefe1Component } from './components/jefe1/jefe1.component';
+import { NgChartsModule } from 'ng2-charts';
+import { NgxChartsModule } from '@swimlane/ngx-charts';
 
 @NgModule({
   declarations: [
@@ -46,7 +50,8 @@ import { NavbargeneralComponent } from './components/navbargeneral/navbargeneral
     FormularioEntrenadorComponent,
     ListaEntrenadoresComponent,
     InsumosComponent,
-    NavbargeneralComponent
+    NavbargeneralComponent,
+    Jefe1Component
 
 
   ],
@@ -54,7 +59,10 @@ import { NavbargeneralComponent } from './components/navbargeneral/navbargeneral
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    NgApexchartsModule,
+    NgChartsModule,
+    NgxChartsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
