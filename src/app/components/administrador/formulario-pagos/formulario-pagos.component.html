@@ -1,1 +1,70 @@
-<p>formulario-pagos works!</p>
+<div class="container d-flex flex-column justify-content-center align-items-center vh-100">
+  <h1>Formulario de Pagos de Insumos</h1>
+  <div class="container" style="color: rgb(253, 253, 253); background: #000; width: 700px;">
+    <form>
+      <fieldset>
+        <legend class="text-center">Ingrese Datos del pago</legend>
+        <!-- <div class="mb-3">
+          <input class="form-control" type="text" placeholder="Ingrese nombre del producto">
+        </div> -->
+        <div class="mb-3">
+          <label for="">Total a pagar: {{total}}</label>
+        </div>
+        <div *ngIf="linkPago != '' ">
+          <img src="{{qrPago}}" alt="">
+          <a href="{{linkPago}}" target="_blank">Link de Pago</a>
+        </div>
+        <button type="submit" class="btn btn-success mb-5" style="background-color: chocolate;"
+          (click)="pagoInsumo()">Realizar Compra</button>
+      </fieldset>
+    </form>
+
+  </div>
+
+  <div class="row">
+    <div class="col-7">
+      <table datatable [dtOptions]="dtoptions" [dtTrigger]="dtTrigger" class="table text-center border table-dark">
+        <thead>
+          <tr>
+            <th scope="col">Nombre</th>
+            <th scope="col">Descripcion</th>
+            <th scope="col">Precio</th>
+            <th scope="col">Stock</th>
+            <th scope="col">...</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let i of arrayInsumos">
+            <td>{{i.nombre}}</td>
+            <td>{{i.descripcion}}</td>
+            <td>{{i.precio}}</td>
+            <td>{{i.stock}}</td>
+            <td>
+              <button class="btn btn-success" (click)="agregarCarrito(i)">+</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="col-5">
+      <table datatable [dtOptions]="dtoptions" [dtTrigger]="dtTrigger" class="table text-center border table-dark">
+        <thead>
+          <tr>
+            <th scope="col">Nombre</th>
+            <th scope="col">Precio</th>
+            <th scope="col">...</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let i of arrayCarrito, index as j">
+            <td>{{i.nombre}}</td>
+            <td>{{i.precio}}</td>
+            <td><button class="btn btn-danger" (click)="quitarCarrito(j)">-</button></td>
+
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+</div>
