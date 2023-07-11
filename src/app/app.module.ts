@@ -23,6 +23,9 @@ import { ListaEntrenadoresComponent } from './components/administrador/lista-ent
 import { InsumosComponent } from './components/alumno/insumos/insumos.component';
 import { NavbargeneralComponent } from './components/navbargeneral/navbargeneral.component';
 
+import { FormularioPagosCuotaComponent } from './components/administrador/formulario-pagos-cuota/formulario-pagos-cuota.component';
+import { EstadoCuotaPipe } from './pipes/estado-cuota.pipe';
+import { DataTablesModule } from 'angular-datatables';
 
 @NgModule({
   declarations: [
@@ -39,6 +42,7 @@ import { NavbargeneralComponent } from './components/navbargeneral/navbargeneral
     ListaInsumosComponent,
     FormularioPagosComponent,
     FormularioPagosComponent,
+    FormularioPagosCuotaComponent,
     PerfilComponent,
     VerSubscripcionComponent,
     SemanarutinasComponent,
@@ -49,12 +53,15 @@ import { NavbargeneralComponent } from './components/navbargeneral/navbargeneral
     NavbargeneralComponent
 
 
+    SemanarutinasComponent,
+    EstadoCuotaPipe
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    DataTablesModule
   ],
   providers: [],
   bootstrap: [AppComponent]

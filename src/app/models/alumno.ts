@@ -2,32 +2,29 @@ import { Plan } from './plan';
 import { Usuario } from './usuario';
 
 export class Alumno {
-  _id!: string;
-  apellido!: string;
-  nombre!: string;
-  fechaNacimiento!: Date;
-  dni!: string;
-  email!: string;
-  nroCelular!: string;
-  domicilio!: string;
-  fechaInicio!: string;
+  _id!:string;
+  apellido!:string;
+  nombre!:string;
+  fechaNacimiento!:Date;
+  dni!:Number;
+  email!:string;
+  nroCelular!:string;
+  domicilio!:string;
+  fechaInicio!:Date;
   plan!: Plan;
   usuario!: Usuario;
-  constructor(
-    nombre: string = '',
-    apellido: string = '',
-    email = '',
-    domiclio = '',
-    nroCelular = '',
-    dni: string = '',
-    usuario: Usuario = new Usuario()
-  ) {
-    this.nombre = nombre;
-    this.apellido = apellido;
-    this.dni = dni;
-    this.email = email;
-    this.usuario = usuario;
-    this.domicilio = domiclio;
-    this.nroCelular = nroCelular;
+
+  constructor(_id?: string, apellido?: string, nombre?: string, fechaNacimiento?: Date, dni?: Number, email?: string, nroCelular?: string, domicilio?: string, fechaInicio?: Date, plan?: Plan, usuario?: Usuario){
+    this._id = _id!;
+    this.apellido = apellido!;
+    this.nombre = nombre!;
+    this.fechaNacimiento = fechaNacimiento!;
+    this.dni = dni!;
+    this.email = email!;
+    this.nroCelular = nroCelular!;
+    this.domicilio = domicilio!;
+    this.fechaInicio = fechaInicio!;
+    this.plan = new Plan(plan?.nombrePlan, plan?.cantDias);
+    this.usuario = new Usuario(usuario?.nombreUsuario, usuario?.password);
   }
 }

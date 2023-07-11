@@ -14,6 +14,8 @@ import { PerfilComponent } from './components/alumno/perfil/perfil.component';
 import { VerSubscripcionComponent } from './components/alumno/ver-subscripcion/ver-subscripcion.component';
 import { SemanarutinasComponent } from './components/alumno/semanarutinas/semanarutinas.component';
 import { FormularioInsumosComponent } from './components/administrador/formulario-insumos/formulario-insumos.component';
+import { FormularioPagosComponent } from './components/administrador/formulario-pagos/formulario-pagos.component';
+import { FormularioPagosCuotaComponent } from './components/administrador/formulario-pagos-cuota/formulario-pagos-cuota.component';
 import { ListaInsumosComponent } from './components/administrador/lista-insumos/lista-insumos.component';
 import { InsumosComponent } from './components/alumno/insumos/insumos.component';
 
@@ -29,6 +31,8 @@ const routes: Routes = [
   { path: 'administrador/formulario/insumo/:id', component:FormularioInsumosComponent},
   { path: 'administrador/lista-insumos', component:ListaInsumosComponent},
   { path: 'administrador/formulario/alumno', component: FormularioAlumnoComponent},
+  { path: 'administrador/formulario/pagosInsumo', component: FormularioPagosComponent},
+  { path: 'administrador/formulario/pagosCuota', component: FormularioPagosCuotaComponent},
   { path: 'administrador/formulario/alumno/:id', component: FormularioAlumnoComponent},
   { path: 'administrador/lista-alumnos', component: ListaAlumnosComponent},
 
