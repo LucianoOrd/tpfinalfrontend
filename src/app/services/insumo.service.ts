@@ -24,6 +24,22 @@ export class InsumoService {
     return this._http.post(this.urlBase + "/", body, httpOptions);
   }
 
+  /**
+   * Peticion al backend para modificar el stock de los insumos
+   * @param insumos 
+   * @returns 
+   */
+  public modificarInsumos(insumos: Array<Insumo>): Observable<any> {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        "Content-Type": "application/json"
+      }),
+      params: new HttpParams()
+    };
+    let body = JSON.stringify(insumos);
+    return this._http.post(this.urlBase + "/modificarInsumos", body, httpOptions);
+  }
+
   public updateInsumo(insumo: any): Observable<any> {
     const httpOptions = {
       headers: new HttpHeaders({
