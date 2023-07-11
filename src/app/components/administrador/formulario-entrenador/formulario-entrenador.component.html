@@ -1,9 +1,8 @@
-<div class="container">
+<!-- <div class="container">
     <h1 class="text-center">Formulario de Entrenador</h1>
     <button class="btn btn-success" (click)="guardarAlumno()">Agregar Alumno</button>
         <div class="container" style="color: rgb(253, 253, 253); background: #000; width: 700px;">
             <form #formAlumno="ngForm">
-                <!-- <fieldset > -->
                 <legend class="text-center">Registrar Alumno</legend>
                 <div class="mb-3">
                     <label for="disabledTextInput" class="form-label">Ingresar nombre</label>
@@ -15,10 +14,6 @@
                             <div *ngIf="nombre.errors?.['minlength']">
                                 Nombre debe tener al menos 3 caracteres.
                             </div>
-                            <!-- <div *ngIf="nombre.errors.caracterEspecial">
-                                No se permiten caracteres especiales.
-                            </div> -->
-                               
                     </div>
                 </div>
                 <div class="mb-3">
@@ -93,10 +88,10 @@
                     
                 </div>
                    
-                <!-- <button [disabled]="!formAlumno.form.valid" *ngIf="accion === 'new'" type="submit" class="btn btn-success " style="background-color: chocolate;" (click)="crearAlumno()">Guardar Alumno</button> -->
-                <!-- <button [disabled]="!formAlumno.form.valid" *ngIf="accion === 'update'" type="submit" class="btn btn-success " style="background-color: chocolate;" (click)="confirmarModificacion()">Modificar Alumno</button> -->
+                <button [disabled]="!formAlumno.form.valid" *ngIf="accion === 'new'" type="submit" class="btn btn-success " style="background-color: chocolate;" (click)="crearAlumno()">Guardar Alumno</button> 
+                 <button [disabled]="!formAlumno.form.valid" *ngIf="accion === 'update'" type="submit" class="btn btn-success " style="background-color: chocolate;" (click)="confirmarModificacion()">Modificar Alumno</button>
 
-                <!-- </fieldset> -->
+               
             </form>
         </div>
-</div>
+</div> -->

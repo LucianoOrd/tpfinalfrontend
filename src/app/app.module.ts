@@ -20,6 +20,9 @@ import {HttpClientModule} from '@angular/common/http';
 import { CaracterEspecial }from './directivas/validacion.directive';
 import { FormularioEntrenadorComponent } from './components/administrador/formulario-entrenador/formulario-entrenador.component';
 import { ListaEntrenadoresComponent } from './components/administrador/lista-entrenadores/lista-entrenadores.component'
+import { InsumosComponent } from './components/alumno/insumos/insumos.component';
+import { NavbargeneralComponent } from './components/navbargeneral/navbargeneral.component';
+
 
 @NgModule({
   declarations: [
@@ -41,8 +44,10 @@ import { ListaEntrenadoresComponent } from './components/administrador/lista-ent
     SemanarutinasComponent,
     CaracterEspecial,
     FormularioEntrenadorComponent,
-    ListaEntrenadoresComponent
-    
+    ListaEntrenadoresComponent,
+    InsumosComponent,
+    NavbargeneralComponent
+
 
   ],
   imports: [
