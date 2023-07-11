@@ -25,8 +25,10 @@ export class PerfilComponent {
   ngOnInit() {
     let token = window.localStorage.getItem('token');
     if (token) {
-      this.usuarioService.getData(token!).subscribe((result: any) => {
+      this.usuarioService.getData(token).subscribe((result: any) => {
         this.alumno = result[0];
+        console.log("RESULTADO DE GET DATA USER RESEET PAGE: ",result);
+        
       });
     }else{
       this.router.navigate(["login"])

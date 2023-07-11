@@ -47,18 +47,18 @@ export class UsuarioService {
   public getData = (token: string) =>{
     const httpOptions = {
       headers: new HttpHeaders({
-        "Authorization": `Bearer ${token}`
+        "Authorization": `${token}`
       }),
+      
       params: new HttpParams()
     };
+    console.log("TOKEN EN GET DATA SERVICE: ", token)
     return this._http.get(this.urlBase + "/api/usuario/getUser", httpOptions);
   }
 
   //cuando resetea la pagina se llama a ese evento para verificar el token y dependiendo del token redirige ala pagina segun su rol
   //se usa en alumno perfil. se puede usar para los diferenes roles
   public userOnly = (token: string) =>{
-    console.log("TOKEN en service!!!: ", token);
-    
     const httpOptions = {
       headers: new HttpHeaders({
         "Authorization": `${token}`

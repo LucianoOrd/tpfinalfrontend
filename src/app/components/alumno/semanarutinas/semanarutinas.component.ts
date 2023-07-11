@@ -1,4 +1,8 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { AlumnoService } from 'src/app/services/alumno.service';
+import { UsuarioService } from 'src/app/services/usuario/usuario.service';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-semanarutinas',
@@ -6,87 +10,47 @@ import { Component } from '@angular/core';
   styleUrls: ['./semanarutinas.component.css']
 })
 export class SemanarutinasComponent {
-  diasSemana: string[] = ['Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes'];
+  diasSemana: string[] = ['Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes'];
   today: Date = new Date
   ejercicio: any
-  ejerciciosGold: any = {
-    Lunes: [
-      { demostracion: 'youtube', ejercicio: 'asindon' },
-      { demostracion: 'youtube', ejercicio: 'asindon2' },
-      { demostracion: 'youtube4', ejercicio: 'asindon3' },
-      { demostracion: 'youtube', ejercicio: 'asindon4' },
-      { demostracion: 'youtube', ejercicio: 'asindon5' }
-    ],
-    Martes: [
-      { demostracion: 'youtube', ejercicio: 'ejercicio1' },
-      { demostracion: 'youtube', ejercicio: 'ejercicio2' },
-      { demostracion: 'youtube', ejercicio: 'ejercicio3' },
-      { demostracion: 'youtube', ejercicio: 'ejercicio4' },
-      { demostracion: 'youtube', ejercicio: 'ejercicio5' }
-    ],
-    Miércoles: [
-      { demostracion: 'youtube', ejercicio: 'entrenamiento1' },
-      { demostracion: 'youtube', ejercicio: 'entrenamiento2' },
-      { demostracion: 'youtube', ejercicio: 'entrenamiento3' },
-      { demostracion: 'youtube', ejercicio: 'entrenamiento4' },
-      { demostracion: 'youtube', ejercicio: 'entrenamiento5' }
-    ],
-    Jueves: [
-      { demostracion: 'youtube', ejercicio: 'cardio1' },
-      { demostracion: 'youtube', ejercicio: 'cardio2' },
-      { demostracion: 'youtube', ejercicio: 'cardio3' },
-      { demostracion: 'youtube', ejercicio: 'cardio4' },
-      { demostracion: 'youtube', ejercicio: 'cardio5' }
-    ],
-    Viernes: [
-      { demostracion: 'youtube', ejercicio: 'flexibilidad1' },
-      { demostracion: 'youtube', ejercicio: 'flexibilidad2' },
-      { demostracion: 'youtube', ejercicio: 'flexibilidad3' },
-      { demostracion: 'youtube', ejercicio: 'flexibilidad4' },
-      { demostracion: 'youtube', ejercicio: 'flexibilidad5' }
-    ]
-  };
+  ejercicios: any 
 
-  ejerciciosBasic: any = {
-    Lunes: [
-      { demostracion: 'youtube', ejercicio: 'asindon' },
-      { demostracion: 'youtube', ejercicio: 'asindon2' },
-      { demostracion: 'youtube4', ejercicio: 'asindon3' },
-      { demostracion: 'youtube', ejercicio: 'asindon4' },
-      { demostracion: 'youtube', ejercicio: 'asindon5' }
-    ],
-    Miércoles: [
-      { demostracion: 'youtube', ejercicio: 'entrenamiento1' },
-      { demostracion: 'youtube', ejercicio: 'entrenamiento2' },
-      { demostracion: 'youtube', ejercicio: 'entrenamiento3' },
-      { demostracion: 'youtube', ejercicio: 'entrenamiento4' },
-      { demostracion: 'youtube', ejercicio: 'entrenamiento5' }
-    ],
-    Viernes: [
-      { demostracion: 'youtube', ejercicio: 'flexibilidad1' },
-      { demostracion: 'youtube', ejercicio: 'flexibilidad2' },
-      { demostracion: 'youtube', ejercicio: 'flexibilidad3' },
-      { demostracion: 'youtube', ejercicio: 'flexibilidad4' },
-      { demostracion: 'youtube', ejercicio: 'flexibilidad5' }
-    ]
-  };
-  constructor(){
+  constructor(private usuarioService: UsuarioService, private router: Router,private sanitizer: DomSanitizer){
     this.today = new Date;
+    /* this.ejerciciosgett() */
     const diaActual = this.diaActual(this.today);
+    /* this.obtenerEjercicioDia(diaActual); */
     this.ejercicio = this.obtenerEjercicioDia(diaActual);
+  }
+
+  
+  getYouTubeEmbedUrl(demostracion: string): SafeResourceUrl {
+    const videoId = this.extractYouTubeVideoId(demostracion);
+    const embedUrl = `https://www.youtube.com/embed/${videoId}`;
+    return this.sanitizer.bypassSecurityTrustResourceUrl(embedUrl);
+  }
+
+  extractYouTubeVideoId(url: string): string {
+    const videoIdRegex = /[?&]v=([^&#]+)/;
+    const match = url.match(videoIdRegex);
+    return match && match[1] ? match[1] : '';
+  }
+  obtenerEjercicioDia(dia: string): any {
+    let token = window.localStorage.getItem('token');
+    if (token) {
+      this.usuarioService.getData(token).subscribe((result: any) => {
+        this.ejercicios = result[0].ejercicios;
+        console.log("EJERCICIOS: ", this.ejercicios);
+      });
+    }else{
+      this.router.navigate(["login"])
+    }
+
   }
   
   diaActual = (fecha: Date): string=>{
     const opcionesFecha: Intl.DateTimeFormatOptions = { weekday: 'long' };
   return fecha.toLocaleDateString('es-ES', opcionesFecha);
   }
-  obtenerEjercicioDia(dia: string): any {
-    console.log("DIA HOY: ",dia);
-    
-    if (this.ejerciciosGold.hasOwnProperty(dia)) {
-      return this.ejerciciosGold[dia];
-    } else {
-      return [{ demostracion: 'No hay ejercicios disponibles', ejercicio: 'Descanso' }];
-    }
-  }
+  
 }

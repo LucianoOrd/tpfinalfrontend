@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { UsuarioService } from 'src/app/services/usuario/usuario.service';
 
 @Component({
   selector: 'app-ver-subscripcion',
@@ -7,7 +9,10 @@ import { Component } from '@angular/core';
 })
 export class VerSubscripcionComponent {
   today: Date = new Date
-  ejercicio: any[]
+  diaAc:any
+  ejercicios: any[] = []
+  ejerciciosHoy: any [] =[]
+  alumno: any
   ejerciciosGold: any = {
     Lunes: [
       { demostracion: 'youtube', ejercicio: 'asindon' },
@@ -45,11 +50,11 @@ export class VerSubscripcionComponent {
       { demostracion: 'youtube', ejercicio: 'flexibilidad5' }
     ]
   };
-  constructor(){
+  constructor(private usuarioService: UsuarioService,private router: Router){
     this.today = new Date;
     const diaActual = this.diaActual(this.today);
-    this.ejercicio = this.obtenerEjercicioDia(diaActual);
-    console.log("EJERCICIOS DEL DIA DE HOY: ",this.ejercicio);
+    this.diaAc = this.diaActual(this.today);
+    this.obtenerEjercicioDia(diaActual);
     
   }
   diaActual = (fecha: Date): string=>{
@@ -57,12 +62,18 @@ export class VerSubscripcionComponent {
   return fecha.toLocaleDateString('es-ES', opcionesFecha);
   }
   obtenerEjercicioDia(dia: string): any {
-    const diaLowerCase = dia.toLowerCase();
-    if (this.ejerciciosGold.hasOwnProperty('Lunes')) {
-      console.log("DIA DEL EJERCICIOS GOLD: ", this.ejerciciosGold['Lunes']);
-      return this.ejerciciosGold['Lunes'];
-    } else {
-      return [{ demostracion: 'No hay ejercicios disponibles', ejercicio: 'Descanso' }];
+    const diaCapitalizado = dia.charAt(0).toUpperCase() + dia.slice(1);
+    let token = window.localStorage.getItem('token');
+    if (token) {
+      this.usuarioService.getData(token).subscribe((result: any) => {
+        this.alumno = result[0];
+        this.ejercicios = this.alumno.ejercicios[diaCapitalizado]
+        /* this.ejercicios = this.alumno.ejercicios.Viernes */
+        console.log("EJERCICIOS HOY!", this.ejercicios)
+      });
+    }else{
+      this.router.navigate(["login"])
     }
+
   }
 }
