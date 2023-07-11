@@ -43,6 +43,6 @@ export class ListaEntrenadoresComponent {
     });
     location.reload();
     // Nose xq no se redirige a la url formulario-entrenador/0 cuando elimino el entrenador, se queda en el id en la url
-    this.router.navigate(["administrador/formulario/entrenador", 0])
+    // this.router.navigate(["administrador/formulario/entrenador", 0])
   }
 }

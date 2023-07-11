@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Insumo } from '../models/insumo';
 import { Observable } from 'rxjs';
 import { Cuota } from '../models/cuota';
-import { param } from 'jquery';
+// import { param } from 'jquery';
 
 @Injectable({
   providedIn: 'root'

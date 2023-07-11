@@ -1,6 +1,6 @@
 <div class="container">
     <h1>LISTADO DE ALUMNOS</h1>
-
+  <a href="/administrador/formulario/entrenador/0" class="btn btn-success my-3">Registrar Entrenador</a>
     <table class="table table-dark">
         <thead>
           <tr>
@@ -9,6 +9,7 @@
             <th scope="col">domicilio</th>
             <th scope="col">celular</th>
             <th scope="col">DNI</th>
+            <th scope="col">Nombre Usuario</th>
             <th scope="col">...</th>
           </tr>
         </thead>
@@ -20,6 +21,7 @@
             <td>{{e.domicilio}}</td>
             <td>{{e.nroCelular}}</td>
             <td>{{e.dni}}</td>
+            <td>{{e.usuario.nombreUsuario}}</td>
             <td>
               <button (click)="modificarEntrenador(e)" class="btn btn-warning mx-1 my-1"><i class="fa-solid fa-pencil"></i></button>
               <button (click)="eliminarEntrenador(e)" class="btn btn-danger mx-1 my-1"><i class="fa-solid fa-trash"></i></button>

@@ -87,6 +87,7 @@ export class FormularioEntrenadorComponent {
       else{
         this.accion = "update"
         this.cargarEntrenador(params['id']);
+        this.cargarUsuario(this.iduser);
       }
     })
   }
@@ -94,14 +95,25 @@ export class FormularioEntrenadorComponent {
 
     this.entrenadorService.getEntrenadorById(id).subscribe((result:any) => {
       Object.assign(this.entrenador, result)
+      console.log(result)
+      this.iduser = result.usuario;
+    })
+  }
+
+  public cargarUsuario(id: string){
+    this.usuarioService.getUsuarioById(id).subscribe((result:any) => {
+      console.log(result)
+      Object.assign(this.usuario, result);
+      console.log(this.usuario)
     })
   }
 
   public confirmarModificacion(){
     this.entrenadorService.updateEntrenador(this.entrenador).subscribe((result:any) => {
       alert("entrenador modificado");
+      this.router.navigate(["administrador/lista-entrenadores"])
     })
-    location.reload();
+    // location.reload();
   }
 
   public crearEntrenador(){

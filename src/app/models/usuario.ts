@@ -5,6 +5,7 @@ export class Usuario {
     nombreUsuario!: string;
     password!: string;
     rol!: Rol;
+
     // constructor(nombreUsuario: string= '', password: string= '', rol: Rol ){
     //     this.nombreUsuario = nombreUsuario;
     //     this.password = password;
