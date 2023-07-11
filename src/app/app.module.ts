@@ -22,6 +22,7 @@ import { FormularioEntrenadorComponent } from './components/administrador/formul
 import { ListaEntrenadoresComponent } from './components/administrador/lista-entrenadores/lista-entrenadores.component'
 import { InsumosComponent } from './components/alumno/insumos/insumos.component';
 import { NavbargeneralComponent } from './components/navbargeneral/navbargeneral.component';
+import { GenerarRutinasComponent } from './components/entrenador/generar-rutinas/generar-rutinas.component';
 
 
 @NgModule({
@@ -46,7 +47,8 @@ import { NavbargeneralComponent } from './components/navbargeneral/navbargeneral
     FormularioEntrenadorComponent,
     ListaEntrenadoresComponent,
     InsumosComponent,
-    NavbargeneralComponent
+    NavbargeneralComponent,
+    GenerarRutinasComponent
 
 
   ],

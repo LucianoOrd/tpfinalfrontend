@@ -57,9 +57,11 @@ export class UsuarioService {
   //cuando resetea la pagina se llama a ese evento para verificar el token y dependiendo del token redirige ala pagina segun su rol
   //se usa en alumno perfil. se puede usar para los diferenes roles
   public userOnly = (token: string) =>{
+    console.log("TOKEN en service!!!: ", token);
+    
     const httpOptions = {
       headers: new HttpHeaders({
-        "Authorization": `Bearer ${token}`
+        "Authorization": `${token}`
       }),
       params: new HttpParams()
     };

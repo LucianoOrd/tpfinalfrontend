@@ -11,7 +11,7 @@ import { AlumnoService } from 'src/app/services/alumno.service';
 export class ListaAlumnosComponent implements OnInit {
 
   alumnos: Array<Alumno>
-
+alumnoa: any
   constructor(private alumnoService: AlumnoService, private router:Router){
     this.alumnos = new Array<Alumno>();
 
@@ -31,10 +31,16 @@ export class ListaAlumnosComponent implements OnInit {
     })
   }
 
-  public modificarAlumno(alumno: Alumno){
-    this.router.navigate(["administrador/formulario/alumno", alumno._id])
+  public setearModificar(alumno: Alumno){
+    this.alumnoa = alumno
+    /* this.router.navigate(["administrador/formulario/alumno", alumno._id]) */
   }
-
+  modificarAlumno = () =>{
+    this.alumnoService.updateAlumno(this.alumnoa).subscribe((result)=>{
+      console.log("resultado editar alumno:", result);
+      
+    })
+  }
   public eliminarAlumno(alumno:Alumno){
     this.alumnoService.eliminarAlumno(alumno._id).subscribe((result:any) => {
       const index = this.alumnos.indexOf(alumno);
@@ -49,7 +55,7 @@ export class ListaAlumnosComponent implements OnInit {
 
 
   ngOnInit(): void {
-
+    
   }
 
 }

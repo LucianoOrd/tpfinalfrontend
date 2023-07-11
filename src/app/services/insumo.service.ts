@@ -15,7 +15,8 @@ export class InsumoService {
   public createInsumo(insumo: Insumo): Observable<any> {
     const httpOptions = {
       headers: new HttpHeaders({
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
+        "Authorization": `${window.localStorage.getItem("token")}`
       }),
       params: new HttpParams()
     };
@@ -23,13 +24,15 @@ export class InsumoService {
     return this._http.post(this.urlBase + "/", body, httpOptions);
   }
 
-  public updateInsumo(insumo: Insumo): Observable<any> {
+  public updateInsumo(insumo: any): Observable<any> {
     const httpOptions = {
       headers: new HttpHeaders({
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
+        "Authorization": `${window.localStorage.getItem("token")}`
       }),
       params: new HttpParams()
     };
+    console.log("INSUMO A MODIFICAR: ",insumo)
     let body = JSON.stringify(insumo);
     return this._http.put(this.urlBase + "/" + insumo._id, body, httpOptions);
   }
@@ -37,7 +40,8 @@ export class InsumoService {
   public eliminarInsumo(id: string): Observable<any> {
     let httpOptions = {
       headers: new HttpHeaders({
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
+        "Authorization": `${window.localStorage.getItem("token")}`
       }),
       params: new HttpParams()
     };
@@ -59,7 +63,7 @@ export class InsumoService {
   public getInsumoById(id:string):Observable<any>{
     let httpOptions = {
       headers: new HttpHeaders({
-
+        "Authorization": `${window.localStorage.getItem("token")}`
       }),
       params: new HttpParams()
     }

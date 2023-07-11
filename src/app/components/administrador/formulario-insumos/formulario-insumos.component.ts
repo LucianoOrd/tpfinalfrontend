@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Insumo } from 'src/app/models/insumo';
+import { CategoriaService } from 'src/app/services/catgorias/categoria.service';
 import { InsumoService } from 'src/app/services/insumo.service';
 
 @Component({
@@ -13,11 +14,16 @@ export class FormularioInsumosComponent implements OnInit{
   insumo:Insumo;
   accion:string = "";
   submitted : boolean=false;
-
-  constructor(private insumoService:InsumoService,private activaedRoute:ActivatedRoute, private router:Router){
+  categorias: any
+  categoriaActual: any
+  constructor(private categoriaService: CategoriaService,private insumoService:InsumoService,private activaedRoute:ActivatedRoute, private router:Router){
     this.insumo = new Insumo();
   }
   ngOnInit(): void {
+    this.categoriaService.getcategorias().subscribe((result)=>{
+      console.log("CATEGORIAS EN FORMULARIO INSUMO: ", result);
+      this.categorias = result
+    })
     this.activaedRoute.params.subscribe(params =>{
       if(params['id'] == 0){
         this.accion = "new";
@@ -37,6 +43,7 @@ export class FormularioInsumosComponent implements OnInit{
 
   public confirmarModificacion(){
     this.insumoService.updateInsumo(this.insumo).subscribe((result:any) => {
+      
       alert("insumo modificado");
       this.router.navigate(['administrador/lista-insumos']);
     })

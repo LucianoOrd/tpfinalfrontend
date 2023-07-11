@@ -12,9 +12,6 @@ export class AlumnoService {
 
   constructor(private _http:HttpClient) { }
 
-
-
-
   public createAlumno(alumno: Alumno): Observable<any> {
     const httpOptions = {
       headers: new HttpHeaders({
@@ -29,7 +26,8 @@ export class AlumnoService {
   public updateAlumno(alumno: Alumno): Observable<any> {
     const httpOptions = {
       headers: new HttpHeaders({
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
+        "Authorization": `${window.localStorage.getItem("token")}`
       }),
       params: new HttpParams()
     };
@@ -40,7 +38,8 @@ export class AlumnoService {
   public eliminarAlumno(id: string): Observable<any> {
     let httpOptions = {
       headers: new HttpHeaders({
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
+        "Authorization": `${window.localStorage.getItem("token")}`
       }),
       params: new HttpParams()
     };
@@ -51,7 +50,7 @@ export class AlumnoService {
   public getAlumnos():Observable<any>{
     let httpOptions = {
       headers: new HttpHeaders({
-
+        "Authorization": `${window.localStorage.getItem("token")}`
       }),
     }
     return this._http.get(this.urlBase + "/", httpOptions);
@@ -62,7 +61,7 @@ export class AlumnoService {
   public getAlumnoById(id:string):Observable<any>{
     let httpOptions = {
       headers: new HttpHeaders({
-
+        "Authorization": `${window.localStorage.getItem("token")}`
       }),
       params: new HttpParams()
     }
