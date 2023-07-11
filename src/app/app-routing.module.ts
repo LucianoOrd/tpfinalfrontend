@@ -18,6 +18,7 @@ import { ListaInsumosComponent } from './components/administrador/lista-insumos/
 import { InsumosComponent } from './components/alumno/insumos/insumos.component';
 import { GenerarRutinasComponent } from './components/entrenador/generar-rutinas/generar-rutinas.component';
 import { FormularioPagosComponent } from './components/administrador/formulario-pagos/formulario-pagos.component';
+import { FormulariopagosssComponent } from './components/administrador/formulariopagosss/formulariopagosss.component';
 
 
 const routes: Routes = [
@@ -34,6 +35,7 @@ const routes: Routes = [
   { path: 'administrador/formulario/alumno/:id', component: FormularioAlumnoComponent},
   { path: 'administrador/lista-alumnos', component: ListaAlumnosComponent},
   { path: 'administrador/formpagos', component: FormularioPagosComponent},
+  { path: 'administrador/formpagossss', component: FormulariopagosssComponent},
 
   { path: 'home', component: HomeComponent },
 //ENTRENADOR

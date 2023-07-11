@@ -34,6 +34,17 @@ export class AlumnoService {
     let body = JSON.stringify(alumno);
     return this._http.put(this.urlBase + "/" + alumno._id, body, httpOptions);
   }
+  public generarPlan(alumno:string, plan: any): Observable<any> {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        "Content-Type": "application/json",
+        "Authorization": `${window.localStorage.getItem("token")}`
+      }),
+      params: new HttpParams()
+    };
+    let body = JSON.stringify(plan);
+    return this._http.post(this.urlBase + "/plan/"+ alumno +  body, httpOptions);
+  }
 
   public eliminarAlumno(id: string): Observable<any> {
     let httpOptions = {

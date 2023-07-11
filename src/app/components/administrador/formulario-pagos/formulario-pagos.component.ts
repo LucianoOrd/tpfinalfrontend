@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AlumnoService } from 'src/app/services/alumno.service';
+import { InsumoService } from 'src/app/services/insumo.service';
 import { MercadopService } from 'src/app/services/mercadop/mercadop.service';
+import { PagoService } from 'src/app/services/pagos/pago.service';
 import { PlanService } from 'src/app/services/plannes/plan.service';
 
 @Component({
@@ -11,8 +13,10 @@ import { PlanService } from 'src/app/services/plannes/plan.service';
 export class FormularioPagosComponent implements OnInit {
   categoriaActual: any = 'insumo';
   alumnos:any
+  insumos: any
   alumno: any
   planes: any
+  insumo:any
   qr:any
   enlace:any
   form = {
@@ -26,9 +30,10 @@ export class FormularioPagosComponent implements OnInit {
     precio: 0,
     descripcion: ''
   }
-  constructor(private planS: PlanService, private alumnoS:AlumnoService, private mercadop: MercadopService) {
+  constructor(private pagoS:PagoService,private planS: PlanService, private alumnoS:AlumnoService, private mercadop: MercadopService, private insumoS: InsumoService) {
   this.getplanes()    
   this.getalumnos()
+  this.getinsmo()
   }
 
   getplanes = () =>{
@@ -43,11 +48,26 @@ export class FormularioPagosComponent implements OnInit {
     })
   }
   generarqr = () =>{
-    this.mercadop.generarqrrr(this.mp).subscribe((result: any)=>{
-      console.log("qrrr???: ", result);
-      this.qr = result.message
-      this.enlace = result.enlance
-    })
+    if (this.categoriaActual === 'PLAN MENSUAL') {
+      this.mercadop.generarqrrr(this.mp).subscribe((result: any)=>{
+        console.log("qrrr???: ", result);
+        this.qr = result.message
+        this.enlace = result.enlance
+      })
+    }else{
+      const insumoad = this.insumos.filter((ins:any)=> ins._id == this.insumo)
+      console.log("asdmaoisndoia: ",insumoad );
+      
+      this.mp ={descripcion: insumoad[0].nombre, precio: insumoad[0].stock}
+      
+      this.mercadop.generarqrrr(this.mp).subscribe((result: any)=>{
+        console.log("qrrr???: ", result);
+        this.qr = result.message
+        this.enlace = result.enlance
+      })
+      
+    }
+  
   }
 
   ngOnInit(): void {}
@@ -55,7 +75,38 @@ export class FormularioPagosComponent implements OnInit {
     this.categoriaActual = ca;
   };
 
+  getinsmo = () =>{
+    this.insumoS.getInsumos().subscribe((result)=>{
+      console.log(result);
+      this.insumos =result
+    })
+  }
+
   guardarplan=()=>{
-    console.log("alumno pagado: ", this.alumno)
+    this.alumnoS.generarPlan(this.alumno, this.mp.descripcion).subscribe((result)=>{
+      console.log("resultado de plan a  alumno: ", result);
+      
+    })
+    
+    if (this.categoriaActual === 'PLAN MENSUAL') {
+      this.mp.descripcion = this.categoriaActual
+      this.pagoS.createPago(this.mp).subscribe((result)=>{
+        console.log(result);
+        
+      })
+      console.log("PAGO A CREARR: ", this.mp);
+      
+    }else{
+      const insumoad = this.insumos.filter((ins:any)=> ins._id == this.insumo)
+      
+      this.mp ={descripcion: insumoad[0].nombre, precio: insumoad[0].stock}
+      console.log("PAGO A CREARR: ", this.mp);
+
+      this.pagoS.createPago(this.mp).subscribe((result)=>{
+        console.log(result);
+        
+      })
+      
+    }
   }
 }

@@ -23,6 +23,7 @@ import { ListaEntrenadoresComponent } from './components/administrador/lista-ent
 import { InsumosComponent } from './components/alumno/insumos/insumos.component';
 import { NavbargeneralComponent } from './components/navbargeneral/navbargeneral.component';
 import { GenerarRutinasComponent } from './components/entrenador/generar-rutinas/generar-rutinas.component';
+import { FormulariopagosssComponent } from './components/administrador/formulariopagosss/formulariopagosss.component';
 
 @NgModule({
   declarations: [
@@ -48,6 +49,7 @@ import { GenerarRutinasComponent } from './components/entrenador/generar-rutinas
     InsumosComponent,
     NavbargeneralComponent,
     GenerarRutinasComponent,
+    FormulariopagosssComponent,
 
   ],
   imports: [
