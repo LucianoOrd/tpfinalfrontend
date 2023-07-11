@@ -31,7 +31,7 @@ const routes: Routes = [
   { path: 'administrador/formulario/alumno/:id', component: FormularioAlumnoComponent},
   { path: 'administrador/lista-alumnos', component: ListaAlumnosComponent},
 
-  { path: 'home', component: HomeComponent },
+  // { path: 'home', component: HomeComponent },
 
   { path: 'alumno/perfil', component: PerfilComponent },
   { path: 'alumno/cuota', component: VerSubscripcionComponent },
