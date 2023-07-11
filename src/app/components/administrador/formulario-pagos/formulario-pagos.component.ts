@@ -19,11 +19,13 @@ export class FormularioPagosComponent implements OnInit {
   arrayInsumos!: Array<Insumo>;
   arrayCarrito!: Array<Insumo>;
   total !: number;
+  carritoVacio!: Boolean;
   dtoptions: DataTables.Settings = {};
   dtTrigger: Subject<any> = new Subject<any>();
 
 
   constructor(private pagoInsumoService: InsumoService, private mercadoPagoInsumoService: MercadoPagoService) {
+    this.carritoVacio = true;
     this.linkPago = '';
     this.total = 0;
     this.arrayInsumos = new Array();
@@ -59,6 +61,7 @@ export class FormularioPagosComponent implements OnInit {
 
   agregarCarrito(ins: Insumo) {
     this.arrayCarrito.push(ins);
+    this.carritoVacio = false;
     this.total = this.total + Number(ins.precio);
     console.log(this.arrayCarrito);
   }
@@ -66,6 +69,9 @@ export class FormularioPagosComponent implements OnInit {
   quitarCarrito(ins: number) {
     this.total = this.total - Number(this.arrayCarrito[ins].precio);
     this.arrayCarrito.splice(ins, 1);
+    if(this.total === 0){
+      this.carritoVacio = true;
+    }
     console.log(this.arrayCarrito);
   }
 

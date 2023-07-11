@@ -1,46 +1,79 @@
- <div class="container">
-        <h1 class="text-center">Formulario de Alumnos</h1>
-        <button class="btn btn-success" (click)="guardarAlumno()">Agregar Alumno</button>
-            <div class="container" style="color: rgb(253, 253, 253); background: #000; width: 700px;">
-                <form >
-                    <fieldset >
-                    <legend class="text-center">Registrar Alumno</legend>
-                    <div class="mb-3">
-                        <label for="disabledTextInput" class="form-label">Ingresar nombre</label>
-                        <input [(ngModel)]="alumno.nombre" name="nombre" type="text" id="" class="form-control" placeholder=" Ejemplo: juan, marcos, julieta, etc...">
-                    </div>
-                    <div class="mb-3">
-                        <label for="disabledTextInput" class="form-label">Ingresar apellido</label>
-                        <input [(ngModel)]="alumno.apellido" name="apellido" type="text" id="" class="form-control" placeholder=" Ejemplo: Sanchez, Messi, Fernandez, etc..">
-                    </div>
-                    <div class="mb-3">
-                        <label for="" class="form-label">Ingresar DNI</label>
-                        <input [(ngModel)]="alumno.dni" name="dni" type="number" id="" class="form-control" placeholder="Ejemplo: 42682738">
-                    </div>
-                    <div class="mb-3">
-                        <label for="disabledTextInput" class="form-label">Ingresar numero de celular</label>
-                        <input [(ngModel)]="alumno.nroCelular" name="nroCelular" type="text" id="" class="form-control" placeholder=" Ejemplo: 3881273823 ">
-                    </div>
-                    <div class="mb-3">
-                        <label for="disabledTextInput" class="form-label">Ingresar domicilio</label>
-                        <input [(ngModel)]="alumno.domicilio" name="domicilio" type="text" id="" class="form-control" placeholder="Ejemplo: Barrio ... , Calle ... , num ...">
-                    </div>
-                    <div class="mb-3">
-                        <label for="exampleFormControlInput1" class="form-label">Email address</label>
-                        <input [(ngModel)]="alumno.email" name="email" type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
-                      </div>
-                      <!-- <div class="mb-3">
+<div class="container">
+    <h1 class="text-center">Formulario de Alumnos</h1>
+    <button class="btn btn-success" (click)="guardarAlumno()">Agregar Alumno</button>
+    <div class="container" style="color: rgb(253, 253, 253); background: #000; width: 700px;">
+        <form #alumnosForm="ngForm">
+            <fieldset>
+                <legend class="text-center">Registrar Alumno</legend>
+
+                <div class="mb-3">
+                    <label for="disabledTextInput" class="form-label">Ingresar nombre</label>
+                    <input [(ngModel)]="alumno.nombre" #nombre="ngModel" name="nombre" type="text" id=""
+                        class="form-control" placeholder=" Ejemplo: juan, marcos, julieta, etc..." required>
+                </div>
+                <div *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)">
+                    <p class="text-danger">Nombre es requerido</p>
+                </div>
+
+                <div class="mb-3">
+                    <label for="disabledTextInput" class="form-label">Ingresar apellido</label>
+                    <input [(ngModel)]="alumno.apellido" name="apellido" type="text" id="" class="form-control"
+                        placeholder=" Ejemplo: Sanchez, Messi, Fernandez, etc.." #apellido="ngModel" required>
+                </div>
+                <div *ngIf="apellido.invalid && (apellido.dirty || apellido.touched)">
+                    <p class="text-danger">Apellido es requerido</p>
+                </div>
+
+                <div class="mb-3">
+                    <label for="" class="form-label">Ingresar DNI</label>
+                    <input [(ngModel)]="alumno.dni" #dni="ngModel" name="dni" type="number" id="" class="form-control"
+                        placeholder="Ejemplo: 42682738" required>
+                </div>
+                <div *ngIf="dni.invalid && (dni.dirty || dni.touched)">
+                    <p class="text-danger">DNI es requerido</p>
+                </div>
+
+                <div class="mb-3">
+                    <label for="disabledTextInput" class="form-label">Ingresar numero de celular</label>
+                    <input [(ngModel)]="alumno.nroCelular" #celular="ngModel" name="nroCelular" type="text" id=""
+                        class="form-control" placeholder=" Ejemplo: 3881273823 " required>
+                </div>
+                <div *ngIf="celular.invalid && (celular.dirty || celular.touched)">
+                    <p class="text-danger">Celular es requerido</p>
+                </div>
+
+                <div class="mb-3">
+                    <label for="disabledTextInput" class="form-label">Ingresar domicilio</label>
+                    <input [(ngModel)]="alumno.domicilio" #domicilio="ngModel" name="domicilio" type="text" id=""
+                        class="form-control" placeholder="Ejemplo: Barrio ... , Calle ... , num ..." required>
+                </div>
+                <div *ngIf="domicilio.invalid && (domicilio.dirty || domicilio.touched)">
+                    <p class="text-danger">Domicilio es requerido</p>
+                </div>
+
+                <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">Email address</label>
+                    <input [(ngModel)]="alumno.email" #email="ngModel" name="email" type="email" class="form-control"
+                        id="exampleFormControlInput1" placeholder="name@example.com" required>
+                </div>
+                <div *ngIf="email.invalid && (email.dirty || email.touched)">
+                    <p class="text-danger">Email es requerido</p>
+                </div>
+
+                <!-- <div class="mb-3">
                         <label for="exampleFormControlTextarea1" class="form-label">Example textarea</label>
                         <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
                       </div> -->
-                    <button *ngIf="accion === 'new'" type="submit" class="btn btn-success " style="background-color: chocolate;" (click)="crearAlumno()">Guardar Alumno</button>
-                    <button *ngIf="accion === 'update'" type="submit" class="btn btn-success " style="background-color: chocolate;" (click)="confirmarModificacion()">Modificar Alumno</button>
+                <button *ngIf="accion === 'new'" type="submit" class="btn btn-success "
+                    style="background-color: chocolate;" (click)="crearAlumno()" [disabled]="alumnosForm.invalid">Guardar Alumno</button>
+                <button *ngIf="accion === 'update'" type="submit" class="btn btn-success "
+                    style="background-color: chocolate;" (click)="confirmarModificacion()" [disabled]="alumnosForm.invalid">Modificar Alumno</button>
 
-                    </fieldset>
-                </form>
-            </div>
+            </fieldset>
+        </form>
+    </div>
 
-            <!-- <form>
+    <!-- <form>
                 <div class="form-group">
                     <label for="titulo">Titulo</label>
                     <input type="text" class="form-control" id="titulo"[(ngModel)]="pelicula.titulo" name="titulo">
@@ -54,11 +87,11 @@
                 <button type="submit" class="btn btnprimary" (click)="procesarForm()">Enviar</button>
                 <button type="button" class="btn btn-primary">Limpiar</button>
             </form> -->
-   </div>
+</div>
 
-   <br />
+<br />
 
-   <!--<div [hidden]="!submitted">
+<!--<div [hidden]="!submitted">
         <h2>Datos enviados:</h2>
             <div class="row">
                 <div>Titulo: {{ pelicula.titulo }}</div>
@@ -69,4 +102,3 @@
         <br>
         <button class="btn btnprimary" (click)="submitted=false">Continuar</button>
    </div> -->
-

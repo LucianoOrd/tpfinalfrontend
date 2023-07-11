@@ -1,25 +1,45 @@
 <div class="container">
-  <h1 class="text-center">Formulario de Insumos</h1>
-  <a class="btn btn-primary" href="/administrador/lista-insumos">Ver Listado</a>
-        <div class="container" style="color: rgb(253, 253, 253); background: #000; width: 700px;">
-            <form >
-                <fieldset >
+    <h1 class="text-center">Formulario de Insumos</h1>
+    <a class="btn btn-primary" href="/administrador/lista-insumos">Ver Listado</a>
+    <div class="container" style="color: rgb(253, 253, 253); background: #000; width: 700px;">
+        <form #insumosForm="ngForm">
+            <fieldset>
                 <legend class="text-center">Registrar Insumo</legend>
+                <!-- NOMBRE -->
                 <div class="mb-3">
                     <label for="disabledTextInput" class="form-label">Ingresar nombre</label>
-                    <input [(ngModel)]="insumo.nombre" name="nombre" type="text" id="" class="form-control" placeholder=" Ejemplo: agua, proteina">
+                    <input [(ngModel)]="insumo.nombre" #nombre="ngModel" name="nombre" type="text" id=""
+                        class="form-control" placeholder=" Ejemplo: agua, proteina" required>
                 </div>
+                <div *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)">
+                    <p class="text-danger">Nombre es requerido</p>
+                </div>
+                <!-- DESCRIPCION -->
                 <div class="mb-3">
                     <label for="disabledTextInput" class="form-label">Ingresar descripción</label>
-                    <input [(ngModel)]="insumo.descripcion" name="descripcion" type="text" id="" class="form-control" placeholder=" Ejemplo: botellas de agua de 2 litros...">
+                    <input [(ngModel)]="insumo.descripcion" #descripcion="ngModel" name="descripcion" type="text" id=""
+                        class="form-control" placeholder=" Ejemplo: botellas de agua de 2 litros..." required>
                 </div>
+                <div *ngIf="descripcion.invalid && (descripcion.dirty || descripcion.touched)">
+                    <p class="text-danger">Descripcion es requerida</p>
+                </div>
+                <!-- PRECIO -->
                 <div class="mb-3">
                     <label for="" class="form-label">Ingresar precio</label>
-                    <input [(ngModel)]="insumo.precio" name="precio" type="number" id="" class="form-control" placeholder="Ejemplo: 100000">
+                    <input [(ngModel)]="insumo.precio" #precio="ngModel" name="precio" type="number" id=""
+                        class="form-control" placeholder="Ejemplo: 100000" required>
                 </div>
+                <div *ngIf="precio.invalid && (precio.dirty || precio.touched)">
+                    <p class="text-danger">Precio es requerido</p>
+                </div>
+                <!-- STOCK -->
                 <div class="mb-3">
                     <label for="disabledTextInput" class="form-label">Ingresar numero de stock</label>
-                    <input [(ngModel)]="insumo.stock" name="stock" type="text" id="" class="form-control" placeholder=" Ejemplo: 100 ">
+                    <input [(ngModel)]="insumo.stock" #stock="ngModel" name="stock" type="text" id=""
+                        class="form-control" placeholder=" Ejemplo: 100 " required>
+                </div>
+                <div *ngIf="stock.invalid && (stock.dirty || stock.touched)">
+                    <p class="text-danger">Stock es requerido</p>
                 </div>
                 <!-- EN PROCESO -->
                 <!-- <div class="mb-3">
@@ -35,13 +55,15 @@
                         <option value="4">herramientas</option>
                     </select>
                   </div> -->
-                  <button *ngIf="accion === 'new'" type="submit" class="btn btn-success " style="background-color: chocolate;" (click)="crearInsumo()">Guardar Insumo</button>
-                  <button *ngIf="accion === 'update'" type="submit" class="btn btn-success " style="background-color: chocolate;" (click)="confirmarModificacion()">Modificar Insumo</button>
-                </fieldset>
-            </form>
-        </div>
+                <button *ngIf="accion === 'new'" type="submit" class="btn btn-success "
+                    style="background-color: chocolate;" (click)="crearInsumo()" [disabled]="insumosForm.invalid">Guardar Insumo</button>
+                <button *ngIf="accion === 'update'" type="submit" class="btn btn-success "
+                    style="background-color: chocolate;" (click)="confirmarModificacion()" [disabled]="insumosForm.invalid">Modificar Insumo</button>
+            </fieldset>
+        </form>
+    </div>
 
-        <!-- <form>
+    <!-- <form>
             <div class="form-group">
                 <label for="titulo">Titulo</label>
                 <input type="text" class="form-control" id="titulo"[(ngModel)]="pelicula.titulo" name="titulo">

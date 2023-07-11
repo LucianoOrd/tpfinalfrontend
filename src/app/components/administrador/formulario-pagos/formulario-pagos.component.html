@@ -1,7 +1,7 @@
 <div class="container d-flex flex-column justify-content-center align-items-center vh-100">
   <h1>Formulario de Pagos de Insumos</h1>
   <div class="container" style="color: rgb(253, 253, 253); background: #000; width: 700px;">
-    <form>
+    <form #pagosCuotasForm="ngForm">
       <fieldset>
         <legend class="text-center">Ingrese Datos del pago</legend>
         <!-- <div class="mb-3">
@@ -15,7 +15,10 @@
           <a href="{{linkPago}}" target="_blank">Link de Pago</a>
         </div>
         <button type="submit" class="btn btn-success mb-5" style="background-color: chocolate;"
-          (click)="pagoInsumo()">Realizar Compra</button>
+          (click)="pagoInsumo()" *ngIf="carritoVacio != true" [disabled]="!pagosCuotasForm.form.valid">Realizar Compra</button>
+          <div *ngIf="carritoVacio">
+            <p class="text-danger">Para realizar un pago es requerido agregar elementos al carrito</p>
+        </div>
       </fieldset>
     </form>
 
