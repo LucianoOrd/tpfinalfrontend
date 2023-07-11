@@ -4,12 +4,13 @@
         <form>
             <fieldset>
                 <legend class="text-center">Ingrese Datos del pago</legend>
+                <!-- DNI -->
                 <div class="mb-3">
-                    <input class="form-control" type="text" id="dni" name="dni" placeholder="Ingrese DNI del Alumno"
+                    <input class="form-control" type="number" id="dni" name="dni" placeholder="Ingrese DNI del Alumno"
                         [(ngModel)]="dni">
                 </div>
                 <button type="submit" class="btn btn-success mb-5" style="background-color: chocolate;"
-                    (click)="obtenerCuotasDni()">Buscar</button>
+                    (click)="obtenerCuotasDni()" >Buscar</button>
             </fieldset>
         </form>
     </div>
@@ -36,7 +37,8 @@
                 <td>{{c.importe}}</td>
                 <td>{{c.pagado | estadoCuota}}</td>
                 <td>
-                    <button type="button" class="btn btn-primary" (click)="generarCuponPago(c)" data-bs-toggle="modal" data-bs-target="#modalPago" *ngIf="c.pagado == false">
+                    <button type="button" class="btn btn-primary" (click)="generarCuponPago(c)" data-bs-toggle="modal"
+                        data-bs-target="#modalPago" *ngIf="c.pagado == false">
                         Pagar
                     </button>
                     <button type="button" class="btn btn-primary" *ngIf="c.pagado == true" disabled>
@@ -80,7 +82,8 @@
                 <a href="{{linkPago}}" target="_blank">Link de Pago</a>
             </div>
             <div class="modal-footer" *ngIf="linkPago == '' ">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="resetCuota()">Cerrar</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"
+                    (click)="resetCuota()">Cerrar</button>
                 <button type="button" class="btn btn-primary" (click)="generarMercadoPagoCuota()">Generar Pago</button>
             </div>
             <div class="modal-footer" *ngIf="linkPago != '' ">
