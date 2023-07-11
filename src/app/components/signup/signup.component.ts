@@ -10,7 +10,7 @@ import { UsuarioService } from 'src/app/services/usuario/usuario.service';
 export class SignupComponent {
   alumno: Alumno = new Alumno()
   constructor(private usuarioService: UsuarioService ){
-    this.alumno.usuario.rol = '64aada555467cf7bcb2d5614' //siempre cuando se registra tiene el valor de rol alumno
+    this.alumno.usuario.rol._id = '64aada555467cf7bcb2d5614' //siempre cuando se registra tiene el valor de rol alumno
   }
 
   signup = () =>{

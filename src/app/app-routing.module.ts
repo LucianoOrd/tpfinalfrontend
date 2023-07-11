@@ -16,6 +16,8 @@ import { SemanarutinasComponent } from './components/alumno/semanarutinas/semana
 import { FormularioInsumosComponent } from './components/administrador/formulario-insumos/formulario-insumos.component';
 import { ListaInsumosComponent } from './components/administrador/lista-insumos/lista-insumos.component';
 import { InsumosComponent } from './components/alumno/insumos/insumos.component';
+import { FormularioEntrenadorComponent } from './components/administrador/formulario-entrenador/formulario-entrenador.component';
+import { ListaEntrenadoresComponent } from './components/administrador/lista-entrenadores/lista-entrenadores.component';
 
 
 const routes: Routes = [
@@ -28,9 +30,10 @@ const routes: Routes = [
   // Rutas del Administrador
   { path: 'administrador/formulario/insumo/:id', component:FormularioInsumosComponent},
   { path: 'administrador/lista-insumos', component:ListaInsumosComponent},
-  { path: 'administrador/formulario/alumno', component: FormularioAlumnoComponent},
   { path: 'administrador/formulario/alumno/:id', component: FormularioAlumnoComponent},
   { path: 'administrador/lista-alumnos', component: ListaAlumnosComponent},
+  { path: 'administrador/formulario/entrenador/:id', component: FormularioEntrenadorComponent},
+  { path: 'administrador/lista-entrenadores', component: ListaEntrenadoresComponent},
 
   // { path: 'home', component: HomeComponent },
 

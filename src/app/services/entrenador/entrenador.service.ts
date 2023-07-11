@@ -1,40 +1,39 @@
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Alumno } from '../models/alumno';
 import { Observable } from 'rxjs';
+import { Entrenador } from 'src/app/models/entrenador';
 
 @Injectable({
   providedIn: 'root'
 })
-export class AlumnoService {
-
-  urlBase: string = "http://localhost:3000/api/alumno";
+export class EntrenadorService {
+  urlBase: string = "http://localhost:3000/api/entrenador";
 
   constructor(private _http:HttpClient) { }
 
-  public createAlumno(alumno: Alumno): Observable<any> {
+  public createEntrenador(entrenador: Entrenador): Observable<any> {
     const httpOptions = {
       headers: new HttpHeaders({
         "Content-Type": "application/json"
       }),
       params: new HttpParams()
     };
-    let body = JSON.stringify(alumno);
+    let body = JSON.stringify(entrenador);
     return this._http.post(this.urlBase + "/", body, httpOptions);
   }
 
-  public updateAlumno(alumno: Alumno): Observable<any> {
+  public updateEntrenador(entrenador: Entrenador): Observable<any> {
     const httpOptions = {
       headers: new HttpHeaders({
         "Content-Type": "application/json"
       }),
       params: new HttpParams()
     };
-    let body = JSON.stringify(alumno);
-    return this._http.put(this.urlBase + "/" + alumno._id, body, httpOptions);
+    let body = JSON.stringify(entrenador);
+    return this._http.put(this.urlBase + "/" + entrenador._id, body, httpOptions);
   }
 
-  public eliminarAlumno(id: string): Observable<any> {
+  public eliminarEntrenador(id: string): Observable<any> {
     let httpOptions = {
       headers: new HttpHeaders({
         "Content-Type": "application/json"
@@ -45,7 +44,7 @@ export class AlumnoService {
     return this._http.delete(this.urlBase + "/" + id, httpOptions);
   }
 
-  public getAlumnos():Observable<any>{
+  public getEntrenadors():Observable<any>{
     let httpOptions = {
       headers: new HttpHeaders({
 
@@ -54,9 +53,9 @@ export class AlumnoService {
     return this._http.get(this.urlBase + "/", httpOptions);
   }
 
-  // Obtener alumno segun el ID
+  // Obtener entrenador segun el ID
 
-  public getAlumnoById(id:string):Observable<any>{
+  public getEntrenadorById(id:string):Observable<any>{
     let httpOptions = {
       headers: new HttpHeaders({
 
