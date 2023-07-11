@@ -1,3 +1,5 @@
+<app-navbargeneral></app-navbargeneral>
+
 <section *ngIf="alumno != null">
   <div *ngIf="editar == false" style="background-color: #eee">
     <div class="container py-5">
@@ -11,10 +13,10 @@
                 class="rounded-circle img-fluid"
                 style="width: 150px"
               />
-              <h5 class="my-3">John Smith</h5>
-              <p class="text-muted mb-1">Full Stack Developer</p>
-              <p class="text-muted mb-4">Bay Area, San Francisco, CA</p>
-              <button (click)="handleEdit()" class="btn btn-primary">
+              <h5 class="my-3">{{alumno.nombre}}</h5>
+              <p class="text-muted mb-1">{{alumno.email}}</p>
+              <p class="text-muted mb-4">{{alumno.domicilio}}</p>
+              <button (click)="handleEdit('editar')" class="btn btn-primary">
                 Editar Datos
               </button>
             </div>
@@ -230,7 +232,7 @@
       </div>
     </div>
   </div>
-  <div *ngIf="editar == false" style="background-color: #eee">
+  <div *ngIf="editar == true" style="background-color: #eee">
     <div class="container py-5">
       <div class="row">
         <div class="col-lg-4">
@@ -242,11 +244,12 @@
                 class="rounded-circle img-fluid"
                 style="width: 150px"
               />
-              <h5 class="my-3">John Smith</h5>
-              <p class="text-muted mb-1">Full Stack Developer</p>
-              <p class="text-muted mb-4">Bay Area, San Francisco, CA</p>
-              <button (click)="handleEdit()" class="btn btn-primary">
-                Guardar
+              <h5 class="my-3">{{alumno.nombre}}</h5>
+              <p class="text-muted mb-1">{{alumno.email}}</p>
+              <p class="text-muted mb-4"> {{alumno.domicilio}}</p>
+
+              <button (click)="handleEdit('editado')" class="btn btn-primary">
+                {{editar === true ? 'Guardar Edicion' : 'Guardar'}}
               </button>
             </div>
           </div>
@@ -261,6 +264,8 @@
                 <div class="col-sm-9">
                   <input
                     type="text"
+                    [(ngModel)]="alumno.nombre"
+                    [value]="alumno.nombre"
                     class="form-control"
                     placeholder="Nombre"
                     aria-label="Username"
@@ -275,7 +280,9 @@
                 </div>
                 <div class="col-sm-9">
                   <input
+                  [value]="alumno.apellido"
                     type="text"
+                    [(ngModel)]="alumno.apellido"
                     class="form-control"
                     placeholder="Apellido"
                     aria-label="Username"
@@ -290,6 +297,8 @@
                 </div>
                 <div class="col-sm-9">
                   <input
+                  [(ngModel)]="alumno.email"
+                  [value]="alumno.email"
                     type="text"
                     class="form-control"
                     placeholder="Email"
@@ -305,7 +314,9 @@
                 </div>
                 <div class="col-sm-9">
                   <input
+                  [value]="alumno.nroCelular"
                     type="text"
+                    [(ngModel)]="alumno.nroCelular"
                     class="form-control"
                     placeholder="Numero de Celular"
                     aria-label="Username"
@@ -320,6 +331,8 @@
                 </div>
                 <div class="col-sm-9">
                   <input
+                  [value]="alumno.dni"
+                  [(ngModel)]="alumno.dni"
                     type="text"
                     class="form-control"
                     placeholder="Dni"
@@ -335,7 +348,9 @@
                 </div>
                 <div class="col-sm-9">
                   <input
+                  [value]="alumno.domicilio"
                     type="text"
+                    [(ngModel)]="alumno.domicilio"
                     class="form-control"
                     placeholder="Dni"
                     aria-label="Domicilio"

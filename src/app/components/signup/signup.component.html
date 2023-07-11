@@ -16,24 +16,45 @@
   
                   <form>
                     <p>Ingresa con tus datos.</p>
+                    <div class="form-outline mb-4">
+                      <div class="form-outline mb-4">
+                        <label class="form-label" for="form2Example11">Usuario</label>
+                        <input type="text" name="1" [(ngModel)]="alumno.usuario.nombreUsuario" id="form2Example11" class="form-control"
+                          placeholder="Nombre de Usuario" />
+                      </div>
+                      <label class="form-label"  for="form2Example22">Contraseña</label>
+                      <input type="password" name="2" id="form2Example22" [(ngModel)]="alumno.usuario.password"  class="form-control" />
+                    </div>
                     <hr>
                     <div class="form-outline mb-4">
-                      <input type="email" id="form2Example11" class="form-control"
-                        placeholder="Phone number or email address" />
-                      <label class="form-label" for="form2Example11">Email</label>
-                    </div>
-  
-                    <div class="form-outline mb-4">
-                      <input type="password" id="form2Example22" class="form-control" />
-                      <label class="form-label" for="form2Example22">Contraseña</label>
+                      <label class="form-label"  for="form2Example23">Nombre</label>
+                      <input type="text" name="3" [(ngModel)]="alumno.nombre" id="form2Example23" class="form-control" />
                     </div>
                     <div class="form-outline mb-4">
-                      <input type="password" id="form2Example22" class="form-control" />
-                      <label class="form-label" for="form2Example22">Nombre</label>
+                      <label class="form-label"  for="form2Example24">Apellido</label>
+                      <input type="text" name="4" [(ngModel)]="alumno.apellido" id="form2Example24" class="form-control" />
                     </div>
+                    <div class="form-outline mb-4">
+                      <label class="form-label" for="form2Example25">Dni</label>
+                      <input type="text" name="5" [(ngModel)]="alumno.dni" id="form2Example25" class="form-control" />
+                    </div>
+                    <div class="form-outline mb-4">
+                      <label class="form-label"  for="form2Example29">Domicilio</label>
+                      <input type="text" name="6" [(ngModel)]="alumno.domicilio" id="form2Example29" class="form-control" />
+                    </div>
+                    <div class="form-outline mb-4">
+                      <label class="form-label"  for="form2Example27">Numero celular</label>
+                      <input type="text" name="7" [(ngModel)]="alumno.nroCelular" id="form2Example27" class="form-control" />
+                    </div>
+                    <div class="form-outline mb-4">
+                      <label class="form-label"  for="form2Example26">Email</label>
+                      <input type="text" name="6" [(ngModel)]="alumno.email" id="form2Example26" class="form-control" />
+                    </div>
+                  
+                 
   
                     <div class="text-center pt-1 mb-5 pb-1">
-                      <button class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3" type="button">Ingresar</button>
+                      <button (click)="signup()" class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3" type="button">Ingresar</button>
                       <!-- <a class="text-muted" href="#!">Forgot password?</a> -->
                     </div>
   
