@@ -35,7 +35,10 @@
 
                   <div class="text-center pt-1 mb-5 pb-1">
                     <button (click)="login()" class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3"
-                      type="button">Ingresar</button>
+                      type="button" [disabled]="loginForm.invalid">Ingresar</button>
+                      <div *ngIf="loginForm.invalid">
+                        <p class="text-danger">Necesita llenar todos los datos</p>
+                      </div>
                     <!-- <a class="text-muted" href="#!">Forgot password?</a> -->
                   </div>
 

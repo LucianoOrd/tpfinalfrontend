@@ -65,10 +65,15 @@
                         <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
                       </div> -->
                 <button *ngIf="accion === 'new'" type="submit" class="btn btn-success "
-                    style="background-color: chocolate;" (click)="crearAlumno()" [disabled]="alumnosForm.invalid">Guardar Alumno</button>
+                    style="background-color: chocolate;" (click)="crearAlumno()"
+                    [disabled]="alumnosForm.invalid">Guardar Alumno</button>
                 <button *ngIf="accion === 'update'" type="submit" class="btn btn-success "
-                    style="background-color: chocolate;" (click)="confirmarModificacion()" [disabled]="alumnosForm.invalid">Modificar Alumno</button>
+                    style="background-color: chocolate;" (click)="confirmarModificacion()"
+                    [disabled]="alumnosForm.invalid">Modificar Alumno</button>
 
+                <div *ngIf="alumnosForm.invalid">
+                    <p class="text-danger">Es necesario llenar todos los campos</p>
+                </div>
             </fieldset>
         </form>
     </div>
