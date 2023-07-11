@@ -4,14 +4,14 @@
     <form>
       <fieldset>
         <legend class="text-center">Ingrese Datos del pago</legend>
-        <div class="mb-3">
+        <!-- <div class="mb-3">
           <input class="form-control" type="text" placeholder="Ingrese nombre del producto">
-        </div>
+        </div> -->
         <div class="mb-3">
-          <label for="">Total a pagar: </label>
+          <label for="">Total a pagar: {{total}}</label>
         </div>
 
-        <button type="submit" class="btn btn-success mb-5" style="background-color: chocolate;" (click)="obtenerInsumos()">Buscar</button>
+        <button type="submit" class="btn btn-success mb-5" style="background-color: chocolate;" (click)="modificarInsumos()">Realizar Compra</button>
       </fieldset>
     </form>
 
@@ -19,7 +19,7 @@
 
   <div class="row">
     <div class="col-7">
-      <table class="table text-center border table-dark">
+      <table datatable [dtOptions]="dtoptions" [dtTrigger]="dtTrigger" class="table text-center border table-dark">
         <thead>
           <tr>
             <th scope="col">Nombre</th>
@@ -43,12 +43,11 @@
       </table>
     </div>
     <div class="col-5">
-      <table class="table text-center border table-dark">
+      <table datatable [dtOptions]="dtoptions" [dtTrigger]="dtTrigger" class="table text-center border table-dark">
         <thead>
           <tr>
             <th scope="col">Nombre</th>
             <th scope="col">Precio</th>
-            <th scope="col">Cantidad</th>
             <th scope="col">...</th>
           </tr>
         </thead>
@@ -56,13 +55,11 @@
           <tr *ngFor="let i of arrayCarrito, index as j">
             <td>{{i.nombre}}</td>
             <td>{{i.precio}}</td>
-            <td></td>
             <td><button class="btn btn-danger" (click)="quitarCarrito(j)">-</button></td>
             
           </tr>
         </tbody>
       </table>
-      <button class="btn btn-primary"(click)="modificarInsumos()">Realizar Compra</button>
     </div>
   </div>
 

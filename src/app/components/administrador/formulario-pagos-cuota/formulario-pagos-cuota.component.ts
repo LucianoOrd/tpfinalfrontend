@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Subject } from 'rxjs';
 import { Alumno } from 'src/app/models/alumno';
 import { Cuota } from 'src/app/models/cuota';
 import { CuotasService } from 'src/app/services/cuotas.service';
@@ -8,16 +9,25 @@ import { CuotasService } from 'src/app/services/cuotas.service';
   templateUrl: './formulario-pagos-cuota.component.html',
   styleUrls: ['./formulario-pagos-cuota.component.css']
 })
-export class FormularioPagosCuotaComponent {
+export class FormularioPagosCuotaComponent implements OnInit {
 
   cuota!: Cuota;
   dni!: number;
   arrayCuotas!: Array<Cuota>;
+  dtoptions: DataTables.Settings = {};
+  dtTrigger: Subject<any> = new Subject<any>();
+
   constructor(private pagoCuotaService: CuotasService) {
     this.cuota = new Cuota();
   }
 
-  obtenerCuotas(){
+  ngOnInit(): void {
+    this.dtoptions = {
+      pagingType: 'full_numbers'
+    }
+  }
+
+  obtenerCuotas() {
     this.pagoCuotaService.getCuotas().subscribe(
       (result) => {
         this.arrayCuotas = new Array<Cuota>();
@@ -27,12 +37,13 @@ export class FormularioPagosCuotaComponent {
           this.arrayCuotas.push(aux);
           aux = new Cuota();
         });
+        this.dtTrigger.next(null);
       },
       (error) => { console.log(error); }
     )
   }
 
-  obtenerCuotasDni(){
+  obtenerCuotasDni() {
     this.pagoCuotaService.getCuotaByDni(this.dni).subscribe(
       (result) => {
         this.arrayCuotas = new Array<Cuota>();
@@ -45,13 +56,13 @@ export class FormularioPagosCuotaComponent {
           aux = new Cuota();
         });
         console.log(this.arrayCuotas)
-        
+        this.dtTrigger.next(null);
       },
       (error) => { console.log(error); }
     )
   }
 
-  generarCuponPago(cuot: Cuota){
+  generarCuponPago(cuot: Cuota) {
     this.cuota = new Cuota(cuot.fechaDePago, cuot.fechaCaducidad, cuot.pagado, cuot.importe, cuot.alumno);
   }
 }

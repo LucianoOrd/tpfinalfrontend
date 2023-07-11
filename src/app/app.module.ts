@@ -18,6 +18,7 @@ import { SemanarutinasComponent } from './components/alumno/semanarutinas/semana
 import {HttpClientModule} from '@angular/common/http';
 import { FormularioPagosCuotaComponent } from './components/administrador/formulario-pagos-cuota/formulario-pagos-cuota.component';
 import { EstadoCuotaPipe } from './pipes/estado-cuota.pipe';
+import { DataTablesModule } from 'angular-datatables';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { EstadoCuotaPipe } from './pipes/estado-cuota.pipe';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    DataTablesModule
   ],
   providers: [],
   bootstrap: [AppComponent]
