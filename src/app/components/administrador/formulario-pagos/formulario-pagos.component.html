@@ -10,8 +10,12 @@
         <div class="mb-3">
           <label for="">Total a pagar: {{total}}</label>
         </div>
-
-        <button type="submit" class="btn btn-success mb-5" style="background-color: chocolate;" (click)="modificarInsumos()">Realizar Compra</button>
+        <div *ngIf="linkPago != '' ">
+          <img src="{{qrPago}}" alt="">
+          <a href="{{linkPago}}" target="_blank">Link de Pago</a>
+        </div>
+        <button type="submit" class="btn btn-success mb-5" style="background-color: chocolate;"
+          (click)="pagoInsumo()">Realizar Compra</button>
       </fieldset>
     </form>
 
@@ -56,7 +60,7 @@
             <td>{{i.nombre}}</td>
             <td>{{i.precio}}</td>
             <td><button class="btn btn-danger" (click)="quitarCarrito(j)">-</button></td>
-            
+
           </tr>
         </tbody>
       </table>

@@ -3,6 +3,7 @@ import { InsumoService } from 'src/app/services/insumo.service';
 import { Insumo } from 'src/app/models/insumo';
 import { Pago } from 'src/app/models/pago';
 import { Subject } from 'rxjs';
+import { MercadoPagoService } from 'src/app/services/mercado-pago.service';
 
 @Component({
   selector: 'app-formulario-pagos',
@@ -12,7 +13,8 @@ import { Subject } from 'rxjs';
 
 export class FormularioPagosComponent implements OnInit {
 
-  pago!: Pago;
+  linkPago!: string;
+  qrPago!: string;
   insumo!: Insumo;
   arrayInsumos!: Array<Insumo>;
   arrayCarrito!: Array<Insumo>;
@@ -21,7 +23,8 @@ export class FormularioPagosComponent implements OnInit {
   dtTrigger: Subject<any> = new Subject<any>();
 
 
-  constructor(private pagoInsumoService: InsumoService) {
+  constructor(private pagoInsumoService: InsumoService, private mercadoPagoInsumoService: MercadoPagoService) {
+    this.linkPago = '';
     this.total = 0;
     this.arrayInsumos = new Array();
     this.arrayCarrito = new Array();
@@ -44,6 +47,7 @@ export class FormularioPagosComponent implements OnInit {
         var aux: Insumo = new Insumo();
         result.forEach((insumo: Insumo) => {
           Object.assign(aux, insumo);
+          aux.precio = Number(aux.precio);
           this.arrayInsumos.push(aux);
           aux = new Insumo();
         });
@@ -74,8 +78,25 @@ export class FormularioPagosComponent implements OnInit {
       },
       (error) => { }
     );
+  }
 
+  pagoInsumo(){
+    this.mercadoPagoInsumoService.pagoInsumo(this.arrayCarrito).subscribe(
+      (result) => {
+        this.linkPago = result.link
+        this.qrPago = result.qr
+        this.modificarInsumos();
+      },
+      (error) => { 
+        console.log(error);
+      }
+    )
+  }
 
+  resetCarrito(){
+    this.linkPago = '';
+    this.qrPago = '';
+    this.arrayCarrito = new Array();
   }
 
 }

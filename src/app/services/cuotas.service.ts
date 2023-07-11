@@ -33,6 +33,18 @@ export class CuotasService {
     return this._http.get(this.urlBase + "/", httpOptions);
   }
 
+  public updateCuota(cuota: Cuota): Observable<any> {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        "Content-Type": "application/json"
+      }),
+      params: new HttpParams()
+    };
+    let body = JSON.stringify(cuota);
+    console.log(cuota);
+    return this._http.put(this.urlBase + "/" + cuota._id, body, httpOptions);
+  }
+
   public getCuotaByDni(dni: number):Observable<any>{
     let httpOptions = {
       headers: new HttpHeaders({
